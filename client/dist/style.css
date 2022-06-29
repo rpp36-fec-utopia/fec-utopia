@@ -1,8 +1,16 @@
-.qaSection {
+/* Shared CSS */
+
+.section {
   background-color: lightblue;
   display: flex;
   flex-direction: column;
 }
+
+/* Overview Section CSS */
+
+/* Related Items Section CSS */
+
+/* Q&A Section CSS */
 
 .search {
   width: 350px;

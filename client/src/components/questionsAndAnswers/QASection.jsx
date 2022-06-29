@@ -9,7 +9,7 @@ class QASection extends React.Component {
 
   render() {
     return (
-      <div class="qaSection">
+      <div class="section">
         <h4>QUESTIONS AND ANSWERS</h4>
         <input type="text" class="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <QuestionsList />
