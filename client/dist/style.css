@@ -1,0 +1,37 @@
+.qaSection {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.search {
+  width: 350px;
+}
+
+.questionsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 75px;
+}
+
+.qa {
+  display: flex;
+  flex-direction: column;
+}
+
+.helpfulAnswer {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+}
+
+.questionButtons {
+  display: flex;
+  flex-direction: row;
+}
