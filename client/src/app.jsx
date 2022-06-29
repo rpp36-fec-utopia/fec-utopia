@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import QASection from './components/questionsAndAnswers/QASection.jsx'
+import Overview from './componenets/overview/Overview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
       <div>
         <h1>Project Atelier</h1>
         <QASection />
+        <Overview />
       </div>
     )
   }
