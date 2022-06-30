@@ -9,11 +9,8 @@ class QASection extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
+    axios.get('/qa/questions')
+    .then(result => console.log(result))
   }
 
   render() {
