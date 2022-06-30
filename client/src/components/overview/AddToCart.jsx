@@ -5,16 +5,25 @@ var AddToCart = (props) => (
   // code here
   // GET /products/:product_id/styles
 
-  <div>
-    cart
-    <select>
-      <option>Select Size</option>
-    </select>
-    <select>
-      <option>-</option>
-    </select>
-    <button>Add to Cart</button>
-    <button>star</button>
+  <div class="cart">
+    <div id="selection">
+      <select>
+        <option>Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+      </select>
+      <select>
+        <option>-</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+    <div id="addToCart">
+      <button>Add to Cart</button>
+      <button>star</button>
+    </div>
   </div>
 );
 

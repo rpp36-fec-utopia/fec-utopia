@@ -13,6 +13,33 @@
   flex-direction: column;
 }
 
+.cart {
+  margin: 5px;
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+#addToCart {
+  margin: 5px;
+}
+
+#selection {
+  margin: 5px;
+}
+
+.styleSel {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#styleThumbnail {
+  height: 45px;
+  width: 45px;
+  margin: 3px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+
 /* Related Items Section CSS */
 
 /* Q&A Section CSS */
