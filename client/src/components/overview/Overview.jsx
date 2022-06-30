@@ -5,11 +5,11 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
 var Overview = (props) => (
-  <div>
+  <div class="overview">
     <ProductInformation />
+    <ImageGallery />
     <StyleSelector />
     <AddToCart />
-    <ImageGallery />
   </div>
 );
 
