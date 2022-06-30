@@ -1,10 +1,19 @@
 import React from 'react';
-import QuestionsList from './QuestionsList.jsx'
+import axios from 'axios';
+import QuestionsList from './QuestionsList.jsx';
 
 class QASection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
   }
 
   render() {
