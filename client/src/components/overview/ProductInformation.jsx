@@ -5,7 +5,7 @@ var ProductInformation = (props) => (
   // code here
   // GET /products/:product_id
   <div className="prodInfo">
-    <div>Display stars and review count</div>
+    <div>★★★★★ review count</div>
     <div>Category here</div>
     <div>Product name here</div>
     <div>$123</div>
