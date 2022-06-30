@@ -15,6 +15,9 @@ class App extends React.Component {
       <div>
         <h1>Project Atelier</h1>
         <QASection />
+        <div>
+          I AM STILL TESTING MERGE
+        </div>
       </div>
     )
   }
