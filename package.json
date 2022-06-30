@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/rpp36-fec-utopia/fec-utopia#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "babel": "^6.23.0",
     "express": "^4.18.1",
     "react": "^18.2.0",
