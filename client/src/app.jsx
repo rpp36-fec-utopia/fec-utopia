@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import QASection from './components/questionsAndAnswers/QASection.jsx'
+import RelatedProducts from './components/relatedItems/RelatedProducts.jsx'
 import Overview from './componenets/overview/Overview.jsx';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Project Atelier</h1>
+        <RelatedProducts />
         <QASection />
         <div>
           I AM STILL TESTING MERGE

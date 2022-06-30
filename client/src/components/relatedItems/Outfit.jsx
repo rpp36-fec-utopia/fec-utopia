@@ -1,18 +1,18 @@
 import React from 'react';
 
-class RelatedItems extends React.Component {
+class Outfit extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
   }
+
 
   render() {
     return (
       <div>
-        <h5>Related Products</h5>
+        <h5>My Outfit</h5>
       </div>
     )
   }
 }
 
-export default RelatedItems;
+export default Outfit;
