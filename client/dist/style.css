@@ -7,29 +7,33 @@
 }
 
 /* Overview Section CSS */
+
 .overview {
   background-color: lightblue;
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
+}
+
+.gallery {
+  float:left;
+  width: 600px;
+}
+
+.mainImg {
+  height: 500px;
+  width: 600px;
 }
 
 .cart {
-  margin: 5px;
+  margin-right: 70px;
   margin-left: auto;
-  margin-right: 80px;
-}
-
-#addToCart {
-  margin: 5px;
-}
-
-#selection {
-  margin: 5px;
+  width: 150px;
+  height: 50px;;
 }
 
 .styleSel {
-  margin-left: auto;
   margin-right: 0;
+  margin-left: auto;
+  width: 220px;
 }
 
 #styleThumbnail {
@@ -38,6 +42,15 @@
   margin: 3px;
   border-radius: 50%;
   border: 2px solid grey;
+}
+
+.prodInfo {
+  width: 200px;
+  float: right;
+}
+
+.freeFormText {
+  margin-top: 250px;
 }
 
 /* Related Items Section CSS */

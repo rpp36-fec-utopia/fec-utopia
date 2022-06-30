@@ -4,7 +4,12 @@ var ProductInformation = (props) => (
   // Product Info componenet
   // code here
   // GET /products/:product_id
-  <div>Product info</div>
+  <div className="prodInfo">
+    <div>Display stars and review count</div>
+    <div>Category here</div>
+    <div>Product name here</div>
+    <div>$123</div>
+  </div>
 );
 
 export default ProductInformation;

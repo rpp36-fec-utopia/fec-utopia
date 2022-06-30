@@ -5,7 +5,7 @@ var AddToCart = (props) => (
   // code here
   // GET /products/:product_id/styles
 
-  <div class="cart">
+  <div className="cart">
     <div id="selection">
       <select>
         <option>Select Size</option>
