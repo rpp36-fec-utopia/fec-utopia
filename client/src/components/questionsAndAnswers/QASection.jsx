@@ -5,11 +5,16 @@ import QuestionsList from './QuestionsList.jsx';
 class QASection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      questions: {}
+    };
   }
 
   componentDidMount() {
-    axios.get('/qa/questions')
+    // console.log(this.props)
+    axios.post('/qa/questions', {
+      product_id: 71697
+    })
     .then(result => console.log(result))
   }
 

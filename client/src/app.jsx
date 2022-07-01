@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import QASection from './components/questionsAndAnswers/QASection.jsx'
-import RelatedProducts from './components/relatedItems/RelatedProducts.jsx'
+import axios from 'axios';
+import QASection from './components/questionsAndAnswers/QASection.jsx';
+import RelatedProducts from './components/relatedItems/RelatedProducts.jsx';
 import Overview from './components/overview/Overview.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      state: 'none'
+      products: [],
+      currentProductID: 0
     }
+  }
+
+  componentDidMount() {
+    axios.get('/products')
+    .then(result => this.setState({
+      products: result.data,
+      currentProductID: result.data[0].id
+    }))
   }
 
   render() {
