@@ -6,16 +6,17 @@ class QASection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: {}
+      questions: []
     };
   }
 
-  componentDidMount() {
-    // console.log(this.props)
-    axios.post('/qa/questions', {
-      product_id: 71697
-    })
-    .then(result => console.log(result))
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      axios.post('/qa/questions', {
+        product_id: this.props.id
+      })
+      .then(result => this.setState({questions: result.data.results}))
+    }
   }
 
   render() {
