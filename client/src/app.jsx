@@ -28,7 +28,7 @@ class App extends React.Component {
         <h1>Project Atelier</h1>
         <Overview />
         <RelatedProducts />
-        <QASection />
+        <QASection id={this.state.currentProductID}/>
       </div>
     )
   }
