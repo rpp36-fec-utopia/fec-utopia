@@ -5,15 +5,18 @@ import QuestionsList from './QuestionsList.jsx';
 class QASection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      questions: []
+    };
   }
 
-  componentDidMount() {
-    axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      axios.post('/qa/questions', {
+        product_id: this.props.id
+      })
+      .then(result => this.setState({questions: result.data.results}))
+    }
   }
 
   render() {
