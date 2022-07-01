@@ -12,19 +12,19 @@ class QuestionsList extends React.Component {
     return (
       <div class="questionsList">
         <h5>Questions List</h5>
-        {list.map((num) => {
+        {this.props.questions.map((item, i) =>
           <div class="question">
             <div class="qa">
-              <div>This is a Random Question</div>
-              <div>I wanted to put this here in place of an answer</div>
+              <div>{item.question_body}</div>
+              <div>ANSWERS LIST</div>
             </div>
             <div class="helpfulAnswer">
               <button>Helpful</button>
               <button>Add Answer</button>
             </div>
           </div>
-        })}
-        <div class="question">
+        )}
+        {/* <div class="question">
           <div class="qa">
             <div>This is a Random Question</div>
             <div>I wanted to put this here in place of an answer</div>
@@ -53,7 +53,7 @@ class QuestionsList extends React.Component {
             <button>Helpful</button>
             <button>Add Answer</button>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
