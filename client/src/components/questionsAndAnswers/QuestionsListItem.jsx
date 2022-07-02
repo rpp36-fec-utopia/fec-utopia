@@ -6,15 +6,13 @@ class QuestionsListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: {},
-      helpful: 0
+      answers: {}
     };
   }
 
   componentDidMount() {
     this.setState({
       answers: this.props.question.answers,
-      helpful: this.props.question.question_helpfulness
     })
   }
 
@@ -25,7 +23,7 @@ class QuestionsListItem extends React.Component {
         <p>Q: {this.props.question.question_body}</p>
         <AnswersList answers={this.props.question.answers}/>
       </div>
-      <HelpfulAnswer helpful={this.props.question.question_helpfulness}/>
+      <HelpfulAnswer id={this.props.question.question_id} helpful={this.props.question.question_helpfulness}/>
     </div>
     )
   }
