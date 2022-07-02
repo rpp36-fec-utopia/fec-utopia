@@ -5,9 +5,9 @@ var ProductInformation = (props) => (
   // GET /reviews/meta
   <div className="prodInfo">
     <div>★★★★★ review count</div>
-    <div>Category here</div>
-    <div>Product name here</div>
-    <div>$123</div>
+    <div>{props.info.category}</div>
+    <div>{props.info.name}</div>
+    <div>${props.price}</div>
   </div>
 );
 
