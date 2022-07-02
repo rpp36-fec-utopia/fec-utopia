@@ -5,14 +5,28 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInformationFreetext from './ProductInformationFreetext.jsx';
 
-var Overview = (props) => (
+class Overview extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      info: [],
+      style: [],
+      slogan: 'Slogan',
+      description: '',
+      features: [],
+    };
+  }
+
+  render() {
+    return(
   <div className="overview">
-    <ProductInformation />
+    <ProductInformation info={this.state.info}/>
     <ImageGallery />
     <StyleSelector />
     <AddToCart />
-    <ProductInformationFreetext />
-  </div>
-);
+    <ProductInformationFreetext slogan={this.state.slogan} desc={this.state.description} feats={this.state.features}/>
+  </div>);
+  }
+}
 
 export default Overview;
