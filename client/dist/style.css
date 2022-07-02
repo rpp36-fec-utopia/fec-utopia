@@ -53,12 +53,14 @@
   margin-top: 250px;
 }
 
-/* Related Items Section CSS */
-
 /* Q&A Section CSS */
 
 .search {
   width: 350px;
+}
+
+h5 {
+  margin-bottom: 0px;
 }
 
 .questionsList {
@@ -87,6 +89,7 @@
 .questionButtons {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 /* Related Products CSS */
