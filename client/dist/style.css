@@ -87,3 +87,42 @@
   display: flex;
   flex-direction: row;
 }
+
+/* Related Products CSS */
+
+.related {
+  background-color: lightblue;
+  border: 1px solid black;
+  /* display: flex; */
+}
+
+.prodName {
+  font-size: small;
+  margin: 3px;
+}
+
+.prodPrice {
+  font-size: medium;
+  margin: 3px;
+}
+
+.category {
+  margin: 3px;
+}
+
+.card {
+  border: 1px solid black;
+  justify-content: space-between;
+  width: 100px;
+  /* height: 200px; */
+  margin: 10px;
+  display: inline-block;
+}
+
+.img {
+  height: 70%;
+}
+
+.rating {
+  margin: 5px;
+}
