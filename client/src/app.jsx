@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Project Atelier</h1>
-        <Overview />
+        <Overview id={this.state.currentProductID}/>
         <RelatedProducts />
         <QASection id={this.state.currentProductID}/>
       </div>
