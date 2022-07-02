@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const AUTH_TOKEN = require('../config.js');
+// const AUTH_TOKEN = require('../config.js');
 const app = express();
 const port = 3000;
 
