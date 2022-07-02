@@ -18,7 +18,7 @@ class App extends React.Component {
     axios.get('/products')
     .then(result => this.setState({
       products: result.data,
-      currentProductID: result.data[0].id
+      currentProductID: result.data[2].id
     }))
   }
 

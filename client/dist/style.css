@@ -80,7 +80,8 @@
 .helpfulAnswer {
   display: flex;
   flex-direction: row;
-  height: 20px;
+  height: 18.5px;
+  margin-top: 16px;
 }
 
 .questionButtons {
