@@ -22,8 +22,7 @@ class QuestionsListItem extends React.Component {
       <div class="qa">
         <p>Q: {this.props.question.question_body}</p>
         {Object.keys(this.state.answers).map((ans, i) => <AnswersListItem ans={ans} answers={this.props.question.answers} i={i} key={i}/>)}
-        {/* <AnswersList answers={this.props.question.answers}/> */}
-      </div>
+       </div>
       <HelpfulAnswer id={this.props.question.question_id} helpful={this.props.question.question_helpfulness}/>
     </div>
     )
