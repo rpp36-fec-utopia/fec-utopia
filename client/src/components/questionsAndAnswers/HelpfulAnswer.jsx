@@ -33,7 +33,7 @@ class HelpfulAnswer extends React.Component {
 
   render() {
     return(
-    <div class="helpfulAnswer">
+    <div className="helpfulAnswer">
       <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
       <button>Add Answer</button>
     </div>
