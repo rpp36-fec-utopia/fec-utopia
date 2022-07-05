@@ -127,3 +127,9 @@
 .rating {
   margin: 5px;
 }
+
+.relItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

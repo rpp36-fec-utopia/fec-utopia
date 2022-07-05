@@ -12,12 +12,12 @@ class Outfit extends React.Component {
 
   render() {
     return (
-      <div class='card'>
-      <p class='img'>IMG HERE</p>
-      <p class='category'>Category</p>
-      <p class='prodName'>Product Name</p>
-      <p class='prodPrice'>$123</p>
-      <p class='rating'>★★★★★</p>
+      <div className='card'>
+      <p className='img'>IMG HERE</p>
+      <p className='category'>Category</p>
+      <p className='prodName'>Product Name</p>
+      <p className='prodPrice'>$123</p>
+      <p className='rating'>★★★★★</p>
       </div>
     )
   }

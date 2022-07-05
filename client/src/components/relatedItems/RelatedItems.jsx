@@ -1,13 +1,19 @@
 import React from 'react';
 
-const RelatedItems = ({relItems}) => {
-  // const related = relItems.map((item) => {
-  //   return (
+const RelatedItems = ({items}) => {
 
-  //   )
-  // })
+  const related = items.map((item) => {
+    return (
+      <div className='card' onClick={handleClick}>
+      <p className='img'>IMG HERE</p>
+      <p className='category'>{item.category}</p>
+      <p className='prodName'>{item.name}</p>
+      <p className='prodPrice'>{item.default_price}</p>
+      <p className='rating'>★★★★★</p>
+      </div>
+    )
+  })
 
-  // here is where I will be creating all the cards for all the related items
 
   var handleClick = () => {
     console.log('the card has been clicked')
@@ -15,13 +21,7 @@ const RelatedItems = ({relItems}) => {
   }
 
   return (
-    <div class='card' onClick={handleClick}>
-    <p class='img'>IMG HERE</p>
-    <p class='category'>Category</p>
-    <p class='prodName'>Product Name</p>
-    <p class='prodPrice'>$123</p>
-    <p class='rating'>★★★★★</p>
-    </div>
+    <div className='relItems'>{related}</div>
   )
 }
 
