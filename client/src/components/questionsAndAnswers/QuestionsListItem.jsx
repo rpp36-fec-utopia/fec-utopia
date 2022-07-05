@@ -1,5 +1,5 @@
 import React from 'react';
-import AnswersList from './AnswersList.jsx';
+import AnswersListItem from './AnswersListItem.jsx';
 import HelpfulAnswer from './HelpfulAnswer.jsx';
 
 class QuestionsListItem extends React.Component {
@@ -21,8 +21,8 @@ class QuestionsListItem extends React.Component {
     <div class="question">
       <div class="qa">
         <p>Q: {this.props.question.question_body}</p>
-        <AnswersList answers={this.props.question.answers}/>
-      </div>
+        {Object.keys(this.state.answers).map((ans, i) => <AnswersListItem ans={ans} answers={this.props.question.answers} i={i} key={i}/>)}
+       </div>
       <HelpfulAnswer id={this.props.question.question_id} helpful={this.props.question.question_helpfulness}/>
     </div>
     )
