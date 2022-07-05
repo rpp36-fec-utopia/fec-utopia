@@ -21,7 +21,7 @@ class HelpfulAnswer extends React.Component {
     axios.post('/qa/questions/helpful', {
       question_id: this.props.id,
     })
-    .then(result => console.log('SUCCESS'))
+    .then(result => console.log('HELPFUL QUESTION'))
     .then(this.incrementHelpful)
   }
 

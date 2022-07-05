@@ -6,10 +6,12 @@ class AnswersListItem extends React.Component {
     super(props);
     this.state = {
       date: "",
-      helpful: 0
+      helpful: 0,
+      reported: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.incrementHelpful = this.incrementHelpful.bind(this);
+    this.handleReport = this.handleReport.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +26,7 @@ class AnswersListItem extends React.Component {
     axios.post('/qa/answers/helpful', {
       answers_id: this.props.answers[this.props.ans].id,
     })
-    .then(result => console.log('SUCCESS'))
+    .then(result => console.log('HELPFUL ANSWER'))
     .then(this.incrementHelpful)
   }
 
@@ -34,14 +36,31 @@ class AnswersListItem extends React.Component {
     })
   }
 
+  handleReport() {
+    axios.post('/qa/answers/report', {
+      answers_id: this.props.answers[this.props.ans].id,
+    })
+    .then(result => console.log('REPORTED ANSWER'))
+    .then(this.setState({
+      reported: true
+    }))
+  }
+
   render() {
+    let button;
+    if(this.state.reported === true) {
+      button = <button>Reported</button>
+    } else {
+      button = <button onClick={this.handleReport}>Report</button>
+    }
+
     return (
       <div>
         <div>{this.props.i+1}: {this.props.answers[this.props.ans].body}</div>
         <div>
           by {this.props.answers[this.props.ans].answerer_name}, {this.state.date}
           <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
-          <button>Report</button>
+          {button}
         </div>
       </div>
     );
