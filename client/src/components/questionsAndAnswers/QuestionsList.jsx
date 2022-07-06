@@ -9,7 +9,7 @@ class QuestionsList extends React.Component {
 
   render() {
     return (
-      <div class="questionsList">
+      <div className="questionsList">
         <h5>Questions List</h5>
         {this.props.questions.map((item, i) =>
           <QuestionsListItem question={item} key={i}/>

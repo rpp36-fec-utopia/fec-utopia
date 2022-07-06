@@ -23,9 +23,9 @@ class QASection extends React.Component {
     return (
       <div class="section">
         <h4>QUESTIONS AND ANSWERS</h4>
-        <input type="text" class="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
+        <input type="text" className="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <QuestionsList questions={this.state.questions}/>
-        <div class="questionButtons">
+        <div className="questionButtons">
           <button>More Questions</button>
           <button>Add Questions</button>
         </div>

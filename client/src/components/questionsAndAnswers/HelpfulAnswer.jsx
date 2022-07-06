@@ -21,7 +21,7 @@ class HelpfulAnswer extends React.Component {
     axios.post('/qa/questions/helpful', {
       question_id: this.props.id,
     })
-    .then(result => console.log('SUCCESS'))
+    .then(result => console.log('HELPFUL QUESTION'))
     .then(this.incrementHelpful)
   }
 
@@ -33,7 +33,7 @@ class HelpfulAnswer extends React.Component {
 
   render() {
     return(
-    <div class="helpfulAnswer">
+    <div className="helpfulAnswer">
       <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
       <button>Add Answer</button>
     </div>

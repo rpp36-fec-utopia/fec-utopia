@@ -18,8 +18,8 @@ class QuestionsListItem extends React.Component {
 
   render() {
     return(
-    <div class="question">
-      <div class="qa">
+    <div className="question">
+      <div className="qa">
         <p>Q: {this.props.question.question_body}</p>
         {Object.keys(this.state.answers).map((ans, i) => <AnswersListItem ans={ans} answers={this.props.question.answers} i={i} key={i}/>)}
        </div>
