@@ -17,12 +17,12 @@ class RelatedProducts extends React.Component {
 
   render () {
     return (
-      <div class='related'>
-        <div class='relItems'>
+      <div className='related'>
+        <div className='relSection'>
         <h4>Related Products</h4>
-        <RelatedItems />
+        <RelatedItems items={this.props.products}/>
         </div>
-        <div class='currOutfit'>
+        <div className='currOutfit'>
         <h4>Your Outfit</h4>
         <Outfit />
         </div>
@@ -30,5 +30,6 @@ class RelatedProducts extends React.Component {
     )
   }
 }
+
 
 export default RelatedProducts;
