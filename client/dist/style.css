@@ -72,6 +72,10 @@ h5 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+<<<<<<< HEAD
+=======
+  height: 75px;
+>>>>>>> f29b346 (test)
 }
 
 .qa {
@@ -82,8 +86,12 @@ h5 {
 .helpfulAnswer {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   height: 18.5px;
   margin-top: 16px;
+=======
+  height: 20px;
+>>>>>>> f29b346 (test)
 }
 
 .questionButtons {
