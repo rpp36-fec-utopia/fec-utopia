@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      currentProductID: 0
+      currentProductID: 71697
     }
   }
 
