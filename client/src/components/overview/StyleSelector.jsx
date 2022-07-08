@@ -2,8 +2,8 @@ import React from 'react';
 
 var styles = (styles) => {
   if (styles) {
-    return styles.map(style => {
-      return <img id="styleThumbnail" src={style.thumbnail_url} />
+    return styles.map((style, i) => {
+      return <img key={i} id="styleThumbnail" src={style.thumbnail_url} />
     })
   }
 }

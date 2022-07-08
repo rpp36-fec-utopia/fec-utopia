@@ -7,7 +7,7 @@ var getImg = (link) => {
 }
 var getThumb = (link) => {
   if (link) {
-    return link.map(img => <img className="thumbs" src={link.thumbnail_url} />)
+    return link.map((img, i) => <img key={i} className="thumbs" src={link.thumbnail_url} />)
   }
 }
 var ImageGallery = (props) => (

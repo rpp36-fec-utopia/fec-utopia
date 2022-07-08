@@ -17,9 +17,11 @@ class Overview extends React.Component {
   }
 }
 
-  componentDidMount() {
-    this.getData();
-    this.getStyles();
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.getData();
+      this.getStyles();
+    }
   }
 
   getData() {
@@ -41,7 +43,6 @@ class Overview extends React.Component {
   getStyles() {
     axios.post('/products/styles', {product_id: this.props.id})
     .then(result => {
-      console.log(result);
       result.data.results.map(style => {
         if (style['default?']) {
           this.setState({

@@ -2,7 +2,7 @@ import React from 'react';
 
 var getFeats = (feats) => {
   if (feats) {
-    return feats.map(feature => <li>{feature.feature}: {feature.value}</li>)
+    return feats.map((feature, i) => <li key={i}>{feature.feature}: {feature.value}</li>)
   } else {
     return;
   }
