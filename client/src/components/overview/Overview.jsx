@@ -16,6 +16,7 @@ class Overview extends React.Component {
       currStyle: {},
   }
   // bind func here
+  this.styleClick.bind(this);
 }
 
   componentDidUpdate(prevProps) {
@@ -59,12 +60,20 @@ class Overview extends React.Component {
     })
   }
 
+  styleClick(e) {
+    var style = this.state.style.results.find(res => res.style_id === e);
+    this.setState({
+      currStyleId: e,
+      currStyle: style,
+    });
+  }
+
   render() {
     return(
   <div className="overview">
     <ProductInformation info={this.state.info} price={this.state.currStyle.original_price}/>
     <ImageGallery style={this.state.currStyle.photos}/>
-    <StyleSelector style={this.state.currStyle.photos} name={this.state.currStyle}/>
+    <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)}/>
     <AddToCart style={this.state.currStyle.skus}/>
     <ProductInformationFreetext slogan={this.state.info.slogan} desc={this.state.info.description} feats={this.state.info.features}/>
   </div>);
