@@ -10,61 +10,69 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: {},
-      style: {},
-      currStyleId: null,
-      currStyle: {},
+      info: {
+        "name": "Air Minis 250",
+        "slogan": "Full court support",
+        "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
+        "category": "Basketball Shoes",
+        "default_price": "0",
+        "features": [
+        {
+                "feature": "Sole",
+                "value": "Rubber"
+            },
+        {
+                "feature": "Material",
+                "value": "FullControlSkin"
+            },
+        ],
+      },
+      style: {
+          "results": [
+          {
+                  "style_id": 1,
+                  "name": "Forest Green & Black",
+                  "original_price": "140",
+                  "sale_price": "0",
+                  "default?": true,
+                  "photos": [
+              {
+                          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                          "url": "urlplaceholder/style_1_photo_number.jpg"
+                      },
+              {
+                          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                          "url": "urlplaceholder/style_1_photo_number.jpg"
+                      }
+                  ],
+              "skus": {
+                        "37": {
+                              "quantity": 8,
+                              "size": "XS"
+                        },
+                        "38": {
+                              "quantity": 16,
+                              "size": "S"
+                        },
+                        "39": {
+                              "quantity": 17,
+                              "size": "M"
+                        },
+                    }
+          },
+        ],
+      },
+      currStyleId: 1,
   }
 }
-
-  componentDidMount() {
-    this.getData();
-    this.getStyles();
-  }
-
-  getData() {
-    axios.post('/products/id', {product_id: this.props.id})
-    .then(result => {
-      var prodInfo = {
-        name: result.data.name,
-        category: result.data.category,
-        default_price: result.data.default_price,
-        features: result.data.features,
-        slogan: result.data.slogan,
-        description: result.data.description
-      };
-      this.setState({
-        info: prodInfo,
-      });
-    })
-  }
-  getStyles() {
-    axios.post('/products/styles', {product_id: this.props.id})
-    .then(result => {
-      console.log(result);
-      result.data.results.map(style => {
-        if (style['default?']) {
-          this.setState({
-            currStyle: style,
-            currStyleId: style.style_id,
-          })
-        }})
-      var styles = {
-        results: result.data.results,
-      };
-      this.setState({
-        style: styles,
-      });
-    })
-  }
 
   render() {
     return(
   <div className="overview">
-    <ProductInformation info={this.state.info} price={this.state.currStyle.original_price}/>
-    <ImageGallery style={this.state.currStyle.photos}/>
-    <StyleSelector style={this.state.currStyle.photos} name={this.state.currStyle}/>
-    <AddToCart style={this.state.currStyle.skus}/>
+    <ProductInformation info={this.state.info} price={this.state.style.results[0].original_price}/>
+    <ImageGallery style={this.state.style}/>
+    <StyleSelector style={this.state.style}/>
+    <AddToCart style={this.state.style}/>
     <ProductInformationFreetext slogan={this.state.info.slogan} desc={this.state.info.description} feats={this.state.info.features}/>
   </div>);
   }
