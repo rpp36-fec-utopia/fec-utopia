@@ -11,6 +11,7 @@ class QASection extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(prevProps);
     if (this.props.id !== prevProps.id) {
       axios.post('/qa/questions', {
         product_id: this.props.id
