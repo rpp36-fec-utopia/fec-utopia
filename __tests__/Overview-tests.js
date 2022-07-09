@@ -19,7 +19,6 @@ describe('App render', () => {
   beforeEach(() => {
     container = document.createElement('div');
     container.setAttribute('id', 'app');
-    console.log(container);
     document.body.appendChild(container);
   });
   afterEach(() => {
@@ -45,3 +44,10 @@ describe('App render', () => {
 //   fireEvent.click(/*click*/);
 //   expect(/*something here*/).to.equal(/*something else*/);
 // });
+
+// TESTING REQUIREMENTS
+// -------------------------------
+// Unit Tests for server and client code using Jest
+// Code Coverage reports for unit tests
+// Aim for 70-80% coverage
+// Aim for 1 End-to-End test for each widget
