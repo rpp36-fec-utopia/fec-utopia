@@ -6,21 +6,32 @@ import axios from 'axios';
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      relatedIds: []
+    }
   }
 
-  /*
-  This is where I plan on fetching the products from the API.
-  Based on whatever is being displayed in the Overview I will get items with the same category ??? how to do this ???
-  I will pass those related products down to my RelatedItems component which will sort and display them
-  */
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.getRelItems()
+    }
+  }
+
+  getRelItems() {
+    axios.post(`/products/related`, {product_id: this.props.id})
+    .then(result => this.setState({
+     relatedIds: result
+    }))
+    .catch(err => console.log('there was an error getting the related ids', err))
+  }
+
 
   render () {
     return (
       <div className='related'>
         <div className='relSection'>
         <h4>Related Products</h4>
-        <RelatedItems items={this.props.products}/>
+        <RelatedItems items={this.props.products} id={this.props.currentProductID} relIds={this.state.relatedIds}/>
         </div>
         <div className='currOutfit'>
         <h4>Your Outfit</h4>
