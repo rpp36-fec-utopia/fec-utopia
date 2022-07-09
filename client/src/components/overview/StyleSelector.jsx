@@ -1,17 +1,17 @@
 import React from 'react';
 
-var styles = (styles) => {
+var styles = (styles, onClick) => {
   if (styles) {
     return styles.map((style, i) => {
-      return <img key={i} id="styleThumbnail" src={style.thumbnail_url} />
+      return <img key={i} id="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id)}/>
     })
   }
 }
 var StyleSelector = (props) => (
   <div className="styleSel">
-    style > {props.name.name}
+    <h4>Style > {props.name.name}</h4>
     <br />
-    {styles(props.style)}
+    {styles(props.style, props.onClick)}
   </div>
 );
 
