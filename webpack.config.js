@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'development',
-  entry: __dirname + '/client/src/app.jsx',
+  entry: __dirname + '/client/src/index.jsx',
   module: {
     rules: [
       {
