@@ -7,16 +7,24 @@ var getImg = (link) => {
 }
 var getThumb = (link) => {
   if (link) {
-    return link.map((img, i) => <img key={i} className="thumbs" src={link.thumbnail_url} />)
+    return link.map((img, i) => <img key={i} className="thumbs" src={img.thumbnail_url} />)
   }
 }
 var ImageGallery = (props) => (
   <div className="gallery">
-    <img className="mainImg" src={getImg(props.style)} />
-    <div>
+    <div style={{position: 'absolute'}}>
+      <button>^</button>
       {getThumb(props.style)}
+      <button>v</button>
+    </div>
+    <div className="img">
+      <button>&lt;</button>
+      <img className="mainImg" src={getImg(props.style)} />
+      <button>></button>
     </div>
   </div>
 );
 
 export default ImageGallery;
+
+// change to class comp for main img state
