@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import axios from 'axios';
 import QASection from './components/questionsAndAnswers/QASection.jsx';
 import RelatedProducts from './components/relatedItems/RelatedProducts.jsx';
@@ -34,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
