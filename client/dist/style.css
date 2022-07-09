@@ -16,6 +16,8 @@
 .gallery {
   float:left;
   width: 600px;
+  display: flex;
+  flex-direction: row;
 }
 
 .mainImg {
@@ -23,7 +25,18 @@
   width: 600px;
   object-fit: contain;
 }
+.img {
+  display: flex;
+  flex-direction: row;
+}
 
+.thumbs {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  flex-direction: column;
+}
 .cart {
   margin-right: 70px;
   margin-left: auto;
