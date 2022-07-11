@@ -14,6 +14,7 @@ import App from './../../app.jsx'
 
 describe('should render main component', () => {
   it('Renders related products', () => {
+    render(<App />)
     render(<RelatedProducts />);
     // const element = document.createElement('div');
     // expect(<RelatedProducts />).not.toBeNull();

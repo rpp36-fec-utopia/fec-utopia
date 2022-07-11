@@ -17,9 +17,8 @@ app.get('/products', (req, res) => {
 
 app.post('/products/related', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
-  axios.get(`${url}/products/${req.body['product_id']}/related`)
+  axios.get(`${url}/products/${req.body['product_id']}/related`) // change the product id number because 0 had no data
   .then((result) => {
-    console.log('these are the related ids: ', result.data)
     res.status(200).send(result.data)
   })
   .catch(err => res.sendStatus(500))

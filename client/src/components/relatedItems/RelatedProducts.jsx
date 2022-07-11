@@ -2,6 +2,7 @@ import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 import Outfit from './Outfit.jsx';
 import axios from 'axios';
+import $ from 'jquery';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -12,17 +13,24 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.id !== prevProps.id) {
-      this.getRelItems()
-    }
-  }
-
-  getRelItems() {
-    axios.post(`/products/related`, {product_id: this.props.id})
-    .then(result => this.setState({
-     relatedIds: result
-    }))
+    if (this.props.currId !== prevProps.currId) {
+    axios.post(`/products/related`, {product_id: this.props.currId})
+    .then(relatedIds => {
+      let temp = []
+      console.log('where is this being logged', relatedIds.data)
+      relatedIds.data.forEach(id => {
+       axios.post('/products/id', {product_id: id})
+        .then(relItemData => {
+          temp.push(relItemData)
+          this.setState({
+            relatedIds: temp
+          })
+        })
+        .catch(err => console.log('there was an error getting product info', err))
+      })
+    })
     .catch(err => console.log('there was an error getting the related ids', err))
+  }
   }
 
 
