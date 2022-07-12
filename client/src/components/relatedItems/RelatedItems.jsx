@@ -1,18 +1,12 @@
 import React from 'react';
 
-const RelatedItems = ({items, id, relIds}) => { // refactor this to a class component and call filter when everything is mounted
-
-  // const filtered = items.filter(item => relIdsArray.includes(items.id))
-
-  // console.log('these are the relIds', relIdsArray)
-
+const RelatedItems = ({items, id, relIds}) => {
   var allData = []
 
-  if (relIds.length > 3) { // this is probably not the best conditional
     relIds.forEach((item) => {
       allData.push(item.data)
     })
-  }
+
 
   const related = allData.map((item, i) => {
     return (
