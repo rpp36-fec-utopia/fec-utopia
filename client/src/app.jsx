@@ -18,7 +18,7 @@ class App extends React.Component {
     axios.get('/products')
     .then(result => this.setState({
       products: result.data,
-      currentProductID: result.data[0].id
+      currentProductID: result.data[2].id
     }))
   }
 
@@ -27,7 +27,7 @@ class App extends React.Component {
       <div>
         <h1>Project Atelier</h1>
         <Overview id={this.state.currentProductID}/>
-        <RelatedProducts id={this.state.currentProductID} products={this.state.products}/>
+        <RelatedProducts currId={this.state.currentProductID} products={this.state.products}/>
         <QASection id={this.state.currentProductID}/>
       </div>
     )
