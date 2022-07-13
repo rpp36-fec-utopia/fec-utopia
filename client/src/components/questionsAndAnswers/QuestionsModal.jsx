@@ -6,7 +6,16 @@ function QuestionsModal(props) {
   if (props.show === false) {
     return null;
   } else {
-    return <form>THIS IS A FORM</form>
+    return <form className="questionsModal">
+      <h3>ASK YOUR QUESTION</h3>
+      <span>about "insert item"</span>
+
+      <div>
+        <input placeholder="Your Question"></input>
+        <input placeholder="Your Nickname"></input>
+        <input placeholder="Your E-Mail"></input>
+      </div>
+      </form>
   }
 }
 

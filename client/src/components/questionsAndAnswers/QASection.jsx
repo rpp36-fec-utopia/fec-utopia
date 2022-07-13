@@ -34,8 +34,8 @@ class QASection extends React.Component {
         <h4>QUESTIONS AND ANSWERS</h4>
         <input type="text" className="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <QuestionsList questions={this.state.questions}/>
+        <QuestionsModal show={this.state.questionsModal}/>
         <div className="questionButtons">
-          <QuestionsModal show={this.state.questionsModal}/>
           <button>More Questions</button>
           <button onClick={this.showQuestionsModal}>Add Questions</button>
         </div>
