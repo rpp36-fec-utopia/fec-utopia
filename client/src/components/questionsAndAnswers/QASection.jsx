@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import QuestionsList from './QuestionsList.jsx';
+import QuestionsModal from './QuestionsModal.jsx';
 
 class QASection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      questionsModal: false
     };
+    this.showQuestionsModal = this.showQuestionsModal.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,6 +22,12 @@ class QASection extends React.Component {
     }
   }
 
+  showQuestionsModal() {
+    this.setState({
+      questionsModal: true
+    })
+  }
+
   render() {
     return (
       <div className="section" data-testid="QA-Section">
@@ -26,8 +35,9 @@ class QASection extends React.Component {
         <input type="text" className="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <QuestionsList questions={this.state.questions}/>
         <div className="questionButtons">
+          <QuestionsModal show={this.state.questionsModal}/>
           <button>More Questions</button>
-          <button>Add Questions</button>
+          <button onClick={this.showQuestionsModal}>Add Questions</button>
         </div>
       </div>
     )
