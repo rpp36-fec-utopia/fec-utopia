@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {cleanup, fireEvent, render} from '@testing-library/react';
+import {cleanup, fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {unmountComponentAtNode} from 'react-dom';
 import {act} from 'react-dom/test-utils';
@@ -12,6 +12,11 @@ import {act} from 'react-dom/test-utils';
 import App from '../client/src/app.jsx';
 import StyleSelector from '../client/src/components/overview/StyleSelector.jsx';
 import ProductInformation from '../client/src/components/overview/ProductInformation.jsx';
+import AddToCart from '../client/src/components/overview/AddToCart.jsx';
+import ProdInfoFreeText from '../client/src/components/overview/ProductInformationFreetext.jsx';
+import ImageGallery from '../client/src/components/overview/ImageGallery.jsx';
+import Overview from '../client/src/components/overview/Overview.jsx';
+import mockData from './mockData.js';
 
 
 describe('App render', () => {
@@ -33,6 +38,25 @@ describe('App render', () => {
     });
     expect(container).not.toBeNull();
   });
+});
+
+describe('ProductInformation component', () => {
+
+  const prodInfo = {
+    name: mockData.productInfo.name,
+    category: mockData.productInfo.category,
+    default_price: mockData.productInfo.default_price,
+    features: mockData.productInfo.features,
+    slogan: mockData.productInfo.slogan,
+    description: mockData.productInfo.description
+  };
+  it('should render product information with given state', () => {
+    render(<ProductInformation info={prodInfo} price={mockData.productStyle.results[0].original_price} sale={mockData.productStyle.results[0].sale_price} />);
+    expect(screen.getByText('Jackets', {exact: false})).toBeInTheDocument();
+    expect(screen.getByText('review count', {exact: false})).toBeInTheDocument();
+    expect(screen.getByText('Camo Onesie', {exact: false})).toBeInTheDocument();
+    expect(screen.getByText('$140.00', {exact: false})).toBeInTheDocument();
+  })
 });
 
 // it('Should change the style name after clicking a style', () => {
