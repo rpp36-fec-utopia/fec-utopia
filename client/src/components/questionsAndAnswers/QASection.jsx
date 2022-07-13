@@ -21,7 +21,7 @@ class QASection extends React.Component {
 
   render() {
     return (
-      <div class="section">
+      <div className="section">
         <h4>QUESTIONS AND ANSWERS</h4>
         <input type="text" className="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <QuestionsList questions={this.state.questions}/>

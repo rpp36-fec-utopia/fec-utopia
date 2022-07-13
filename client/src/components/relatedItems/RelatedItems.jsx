@@ -4,18 +4,24 @@ const RelatedItems = ({items, id, relIds}) => {
   var allData = []
 
     relIds.forEach((item) => {
-      allData.push(item.data)
+      console.log('these are the items', item.relItemStyles.data.results)
+      allData.push({
+        itemData: item.relItem.data,
+        itemStyles: item.relItemStyles.data.results
+      })
     })
+
+    console.log('allData', allData)
 
 
   const related = allData.map((item, i) => {
     return (
       <div key={i} className='card' onClick={handleClick}>
-      <p className='img'>IMG HERE</p>
-      <p className='category'>{item.category}</p>
-      <p className='prodName'>{item.name}</p>
-      <p className='prodPrice'>{item.default_price}</p>
-      <p className='rating'>★★★★★</p>
+       <img className='relImg' src={item.itemStyles[0].photos[0].thumbnail_url}></img>
+         <p className='category'>{item.itemData.category}</p>
+         <p className='prodName'>{item.itemData.name}</p>
+         <p className='prodPrice'>{item.itemData.default_price}</p>
+         <p className='rating'>★★★★★</p>
       </div>
     )
   })
