@@ -3,4 +3,5 @@ config.js
 bundle.js
 coverage
 __tests__/mockData.js
+sampleData.js
 # add more as needed
