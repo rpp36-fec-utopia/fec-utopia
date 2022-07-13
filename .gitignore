@@ -1,6 +1,6 @@
 node_modules
 config.js
 bundle.js
-coverage/
+coverage
 __tests__/mockData.js
 # add more as needed
