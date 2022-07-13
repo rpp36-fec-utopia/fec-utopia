@@ -42,6 +42,7 @@ app.post('/qa/questions', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.get(`${url}/qa/questions/?product_id=${req.body['product_id']}`)
   .then(result => res.send(result.data))
+  .catch(err => res.sendStatus(500))
 })
 
 app.post('/qa/questions/helpful', (req, res) => {
