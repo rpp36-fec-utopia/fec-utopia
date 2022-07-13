@@ -2,7 +2,6 @@ import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 import Outfit from './Outfit.jsx';
 import axios from 'axios';
-import $ from 'jquery';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
