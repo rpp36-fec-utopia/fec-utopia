@@ -1,10 +1,16 @@
 import React from 'react';
 
-const RelatedItems = ({items}) => {
+const RelatedItems = ({items, id, relIds}) => {
+  var allData = []
 
-  const related = items.map((item) => {
+    relIds.forEach((item) => {
+      allData.push(item.data)
+    })
+
+
+  const related = allData.map((item, i) => {
     return (
-      <div className='card' onClick={handleClick}>
+      <div key={i} className='card' onClick={handleClick}>
       <p className='img'>IMG HERE</p>
       <p className='category'>{item.category}</p>
       <p className='prodName'>{item.name}</p>
@@ -17,12 +23,13 @@ const RelatedItems = ({items}) => {
 
   var handleClick = () => {
     console.log('the card has been clicked')
-    // I will have to display a comparison modal upon the user clicking a card
+    // needs to navigate to a page where the clicked product is now the featured product
   }
 
   return (
     <div className='relItems'>{related}</div>
   )
 }
+
 
 export default RelatedItems;
