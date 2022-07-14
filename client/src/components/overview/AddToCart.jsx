@@ -42,7 +42,7 @@ class AddToCart extends React.Component {
     });
     if (e.target.id === 'size' && e.target.value === 'Select Size') {
       this.setState({
-        size: null,
+        // size: null,
         defaultQuant: null,
       });
     }

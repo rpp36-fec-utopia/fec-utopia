@@ -72,7 +72,7 @@ class Overview extends React.Component {
     return(
   <div className="overview">
     <ProductInformation info={this.state.info} price={this.state.currStyle.original_price} sale={this.state.currStyle.sale_price}/>
-    <ImageGallery style={this.state.currStyle.photos}/>
+    <ImageGallery style={this.state.currStyle.photos} id={this.state.currStyleId}/>
     <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)}/>
     <AddToCart style={this.state.currStyle.skus}/>
     <ProductInformationFreetext slogan={this.state.info.slogan} desc={this.state.info.description} feats={this.state.info.features}/>
