@@ -4,4 +4,6 @@ bundle.js
 coverage
 __tests__/mockData.js
 sampleData.js
+__tests__/QA-tests.js
+__tests__/Overview-tests.js
 # add more as needed
