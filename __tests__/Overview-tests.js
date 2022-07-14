@@ -16,37 +16,37 @@ import AddToCart from '../client/src/components/overview/AddToCart.jsx';
 import ProductInformationFreetext from '../client/src/components/overview/ProductInformationFreetext.jsx';
 import ImageGallery from '../client/src/components/overview/ImageGallery.jsx';
 import Overview from '../client/src/components/overview/Overview.jsx';
-import mockData from './mockData.js';
+import mockData from '../sampleData/mockData.js';
 
 
-describe('App render', () => {
-  let container = null;
-  beforeEach(() => {
-    container = document.createElement('div');
-    container.setAttribute('id', 'app');
-    document.body.appendChild(container);
-  });
-  afterEach(() => {
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-  });
+let container = null;
+beforeEach(() => {
+  container = document.createElement('div');
+  container.setAttribute('id', 'app');
+  document.body.appendChild(container);
+});
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
-  it('should render the app', () => {
-    act(() => {
-      render(<App />, container);
-    });
-    expect(container).not.toBeNull();
+it('should render the app', () => {
+  act(() => {
+    render(<App />, container);
   });
+  expect(container).not.toBeNull();
 });
 
 describe('Overview component', () => {
-  const container = document.createElement('div');
-  document.body.appendChild(container);
-  act(() => {
-    render(<Overview id={1}/>, container);
-  });
-  expect(container).not.toBeNull();
+  it('should render the overview component', () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    act(() => {
+      render(<Overview id={1}/>, container);
+    });
+    expect(container).not.toBeNull();
+  })
 });
 
 describe('ProductInformation component', () => {
@@ -82,7 +82,18 @@ describe('ProductInformationFreetext component', () => {
   })
 });
 
+describe('AddToCart component', () => {
+  beforeEach(() => {
+    render(<AddToCart style={mockData.productStyle.results[0].skus}/>);
+  });
 
+  it('should have 2 dropdowns', () => {
+    expect(screen.getAllByRole('combobox').length).toBe(2);
+  });
+  it('should have a default size of "Select Size"', () => {
+    expect(screen.getByRole('option', {name: 'Select Size'})).toBeInTheDocument();;
+  })
+})
 
 
 
