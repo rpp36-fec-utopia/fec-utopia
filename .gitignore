@@ -2,4 +2,5 @@ node_modules
 config.js
 bundle.js
 coverage
+sampleData.js
 # add more as needed
