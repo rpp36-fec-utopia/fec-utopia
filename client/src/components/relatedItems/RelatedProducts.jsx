@@ -16,14 +16,19 @@ class RelatedProducts extends React.Component {
     axios.post(`/products/related`, {product_id: this.props.currId})
     .then(relatedIds => {
       let temp = []
-      console.log('where is this being logged', relatedIds.data)
       relatedIds.data.forEach(id => {
        axios.post('/products/id', {product_id: id})
         .then(relItemData => {
-          temp.push(relItemData)
-          this.setState({
-            relatedIds: temp
-          })
+          axios.post('/products/styles', {product_id: id})
+            .then(relItemStyle => {
+              temp.push({
+                relItem: relItemData,
+                relItemStyles: relItemStyle
+              })
+              this.setState({
+                relatedIds: temp
+              })
+            })
         })
         .catch(err => console.log('there was an error getting product info', err))
       })
