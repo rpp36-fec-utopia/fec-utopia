@@ -12,15 +12,15 @@ var getThumb = (link) => {
 }
 var ImageGallery = (props) => (
   <div className="gallery">
-    <div style={{position: 'absolute'}}>
+    <div>
       <button>^</button>
       {getThumb(props.style)}
       <button>v</button>
     </div>
     <div className="img">
-      <button>&lt;</button>
+      <button style={{height: '25px'}}>&lt;</button>
       <img className="mainImg" src={getImg(props.style)} />
-      <button>></button>
+      <button style={{height: '25px'}}>></button>
     </div>
   </div>
 );

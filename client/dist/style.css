@@ -38,6 +38,7 @@
   object-fit: cover;
   flex-direction: column;
   cursor: pointer;
+  margin: 5px;
 }
 .cart {
   margin-right: 70px;
