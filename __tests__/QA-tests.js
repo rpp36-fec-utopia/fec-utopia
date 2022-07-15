@@ -15,7 +15,7 @@ import QuestionsList from '../client/src/components/questionsAndAnswers/Question
 import QuestionsListItem from '../client/src/components/questionsAndAnswers/QuestionsListItem.jsx';
 import AnswersListItem from '../client/src/components/questionsAndAnswers/AnswersListItem.jsx';
 import HelpfulAnswer from '../client/src/components/questionsAndAnswers/HelpfulAnswer.jsx';
-import sampleData from '../client/src/sampleData.js'
+import sampleData from '../sampleData/sampleData.js'
 
 
 describe('QA render', () => {
