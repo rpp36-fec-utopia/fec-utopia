@@ -16,12 +16,12 @@ class ImageGallery extends React.Component {
     this.updateList.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if(this.props.id !== prevProps.id) {
       var arr = this.getThumb(this.props.style);
       this.setState({
-        currImg: this.props.style[0].thumbnail_url,
-        currImgIdx: 0,
+        currImg: this.props.style[prevState.currImgIdx].thumbnail_url,
+        currImgIdx: prevState.currImgIdx,
         list: arr.slice(0, 7),
         fullList: arr,
       });
