@@ -5,13 +5,15 @@ class ImageGallery extends React.Component {
     super(props);
     this.state = {
       currImg: null,
-      currImgIdx: null,
+      currImgIdx: 0,
       list: [],
       fullList: [],
     }
     this.thumbClick.bind(this);
     this.buttonNext.bind(this);
     this.buttonPrev.bind(this);
+    this.getThumb.bind(this);
+    this.updateList.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +35,16 @@ class ImageGallery extends React.Component {
   }
   getThumb(link) {
     if (link) {
-      return link.map((img, i) => <img key={i} className="thumbs" src={img.thumbnail_url} onClick={this.thumbClick.bind(this)} />)
+      return link.map((img, i) => {
+        var image = img.thumbnail_url;
+        if (!image) {
+          image = img.props.src;
+        }
+        if (i === this.state.currImgIdx) {
+        return (<img key={i} className="thumbs" style={{boxShadow: '0px 4px black'}}  src={image} onClick={this.thumbClick.bind(this)} />);
+      }
+        return (<img key={i} className="thumbs" style={{boxShadow: '0px 0px black'}} src={image} onClick={this.thumbClick.bind(this)} />);
+      })
     }
   }
   thumbClick(e) {
@@ -42,6 +53,8 @@ class ImageGallery extends React.Component {
     this.setState({
       currImg: clickedThumbLink,
       currImgIdx: index,
+    }, () => {
+      this.updateList();
     });
   }
   buttonNext() {
@@ -54,6 +67,7 @@ class ImageGallery extends React.Component {
       currImgIdx: newIndex,
       currImg: newImg,
     });
+    this.updateList();
   }
   buttonPrev() {
     var newIndex = this.state.currImgIdx - 1;
@@ -65,12 +79,19 @@ class ImageGallery extends React.Component {
       currImgIdx: newIndex,
       currImg: newImg,
     });
+    this.updateList();
   }
   listScrollUp() {
     // scroll list up
   }
   listScrollDown() {
     // scroll list down
+  }
+  updateList() {
+    var arr = this.getThumb(this.state.list);
+    this.setState({
+      list: arr,
+    });
   }
 
   render() {

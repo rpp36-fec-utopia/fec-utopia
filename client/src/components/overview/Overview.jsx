@@ -81,3 +81,7 @@ class Overview extends React.Component {
 }
 
 export default Overview;
+
+// highlight selected thumbnail
+// switching styles should maintain current thumbnail index
+// up/down arrow not same as next/prev arrow
