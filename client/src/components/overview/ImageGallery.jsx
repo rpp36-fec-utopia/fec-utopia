@@ -14,6 +14,8 @@ class ImageGallery extends React.Component {
     this.buttonPrev.bind(this);
     this.getThumb.bind(this);
     this.updateList.bind(this);
+    this.listScrollDown.bind(this);
+    this.listScrollUp.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -22,7 +24,7 @@ class ImageGallery extends React.Component {
       this.setState({
         currImg: this.props.style[prevState.currImgIdx].thumbnail_url,
         currImgIdx: prevState.currImgIdx,
-        list: arr.slice(0, 7),
+        list: arr.slice(0, 2),
         fullList: arr,
       });
     }
@@ -49,7 +51,7 @@ class ImageGallery extends React.Component {
   }
   thumbClick(e) {
     var clickedThumbLink = e.target.src;
-    var index = this.state.list.map((img) => img.props.src).indexOf(e.target.src);
+    var index = this.state.fullList.map((img) => img.props.src).indexOf(e.target.src);
     this.setState({
       currImg: clickedThumbLink,
       currImgIdx: index,
@@ -59,18 +61,24 @@ class ImageGallery extends React.Component {
   }
   buttonNext() {
     var newIndex = this.state.currImgIdx + 1;
-    if (newIndex > this.state.list.length - 1) {
+    var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
+    if (newIndex > this.state.fullList.length - 1) {
       return;
     }
-    var newImg = this.state.list[newIndex].props.src;
+    var newImg = this.state.fullList[newIndex].props.src;
     this.setState({
       currImgIdx: newIndex,
       currImg: newImg,
+    }, () => {
+      this.updateList();
+      if (index === this.state.list.length - 1) {
+        this.listScrollDown();
+      }
     });
-    this.updateList();
   }
   buttonPrev() {
     var newIndex = this.state.currImgIdx - 1;
+    var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
     if (newIndex < 0) {
       return;
     }
@@ -78,14 +86,37 @@ class ImageGallery extends React.Component {
     this.setState({
       currImgIdx: newIndex,
       currImg: newImg,
+    }, () => {
+      this.updateList();
+      if (index === 0) {
+        console.log(index)
+        this.listScrollUp();
+      }
     });
-    this.updateList();
   }
   listScrollUp() {
-    // scroll list up
+    var start = this.state.list[0].props.src;
+    var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
+    index -= 2;
+    var end = index + 2;
+    if (index < 0) {
+      return;
+    }
+    this.setState({
+      list: this.state.fullList.slice(index, end)
+    });
   }
   listScrollDown() {
-    // scroll list down
+    var start = this.state.list[0].props.src;
+    var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
+    index += 2;
+    var end = index + 2;
+    if (index > this.state.fullList.length - 1) {
+      return;
+    }
+    this.setState({
+      list: this.state.fullList.slice(index, end)
+    });
   }
   updateList() {
     var arr = this.getThumb(this.state.list);
@@ -98,9 +129,9 @@ class ImageGallery extends React.Component {
     return (
       <div className="gallery">
         <div>
-          <button>^</button>
+          <button onClick={this.listScrollUp.bind(this)}>^</button>
           {this.state.list}
-          <button>v</button>
+          <button onClick={this.listScrollDown.bind(this)}>v</button>
         </div>
         <div className="img">
           <button onClick={this.buttonPrev.bind(this)} style={{height: '25px'}}>&lt;</button>
