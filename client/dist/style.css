@@ -24,6 +24,7 @@
   height: 500px;
   width: 600px;
   object-fit: contain;
+  cursor: zoom-in;
 }
 .img {
   display: flex;
@@ -36,6 +37,8 @@
   width: 50px;
   object-fit: cover;
   flex-direction: column;
+  cursor: pointer;
+  margin: 5px;
 }
 .cart {
   margin-right: 70px;
@@ -57,6 +60,7 @@
   border-radius: 50%;
   border: 2px solid grey;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .prodInfo {
