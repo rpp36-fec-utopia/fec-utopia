@@ -16,8 +16,9 @@ class AnswersListItem extends React.Component {
 
   componentDidMount() {
     const date = new Date(this.props.answers[this.props.ans].date);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     this.setState({
-      date: date.toLocaleDateString(),
+      date: date.toLocaleDateString({}, options),
       helpful: this.props.answers[this.props.ans].helpfulness
     })
   }
@@ -58,7 +59,7 @@ class AnswersListItem extends React.Component {
       <div>
         <div>{this.props.i+1}: {this.props.answers[this.props.ans].body}</div>
         <div>
-          by {this.props.answers[this.props.ans].answerer_name}, {this.state.date}
+          by {this.props.answers[this.props.ans].answerer_name} | {this.state.date} |
           <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
           {button}
         </div>
