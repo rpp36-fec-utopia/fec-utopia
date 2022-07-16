@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       products: [],
       currentProductID: 0
+      // stared: false,
     }
   }
 
