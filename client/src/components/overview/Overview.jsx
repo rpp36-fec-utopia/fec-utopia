@@ -26,7 +26,12 @@ class Overview extends React.Component {
     }
   }
   getData() {
-    axios.post('/products/id', {product_id: this.props.id})
+    axios({
+      method: 'get',
+      baseUrl: 'localhost:3000',
+      url: '/products/id',
+      params: {id: this.props.id},
+    })
     .then(result => {
       var prodInfo = {
         name: result.data.name,
@@ -85,3 +90,4 @@ export default Overview;
 // highlight selected thumbnail
 // switching styles should maintain current thumbnail index
 // up/down arrow not same as next/prev arrow
+// box-shadow: 0px 5px
