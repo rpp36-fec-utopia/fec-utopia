@@ -9,6 +9,39 @@ class QuestionsModal extends React.Component {
       name: "",
       email: ""
     };
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange1(event) {
+    this.setState({
+      body: event.target.value
+    })
+  }
+
+  handleChange2(event) {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  handleChange3(event) {
+    this.setState({
+      email: event.target.value
+    })
+  }
+
+  handleSubmit() {
+    axios.post('/qa/questions/add', {
+      body: this.state.body,
+      name: this.state.name,
+      email: this.state.email,
+      product_id: this.props.id
+    })
+    .then(result => console.log('QUESTION ADDED'))
+    .then(this.props.hide)
   }
 
   render() {
@@ -20,12 +53,12 @@ class QuestionsModal extends React.Component {
         <span>about {this.props.name}</span>
 
         <div className="questionForm">
-          <input placeholder="Your Question"></input>
-          <input placeholder="Your Nickname"></input>
-          <input placeholder="Your E-Mail"></input>
+          <input placeholder="Your Question" onChange={this.handleChange1}></input>
+          <input placeholder="Your Nickname" onChange={this.handleChange2}></input>
+          <input placeholder="Your E-Mail" onChange={this.handleChange3}></input>
         </div>
         <div>
-          <button>Submit Question</button>
+          <button onClick={this.handleSubmit}>Submit Question</button>
         </div>
         </div>
     }

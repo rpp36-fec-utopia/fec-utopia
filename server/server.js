@@ -65,9 +65,13 @@ app.post('/qa/answers/report', (req, res) => {
 
 app.post('/qa/questions/add', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
-  console.log('THIS IS THE REQ: ', req);
-  axios.post(`${url}/qa/questions`)
-  .then(result => console.log(result))
+  axios.post(`${url}/qa/questions`, {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+    product_id: req.body.product_id
+  })
+  .then(result => res.sendStatus(201))
   .catch(err => res.sendStatus(500))
 })
 
