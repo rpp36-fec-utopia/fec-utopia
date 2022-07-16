@@ -20,7 +20,7 @@ class App extends React.Component {
       products: result.data,
       currentProductID: result.data[2].id
     }, () => {
-      console.log(window.location.pathname)
+      // console.log(window.location.pathname)
     }))
   }
 

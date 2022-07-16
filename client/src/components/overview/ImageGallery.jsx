@@ -99,6 +99,7 @@ class ImageGallery extends React.Component {
     index -= 7;
     var end = index + 7;
     if (index < 0) {
+      document.getElementById('scrollup').style.visibility = 'hidden';
       return;
     }
     this.setState({
@@ -108,6 +109,9 @@ class ImageGallery extends React.Component {
   listScrollDown() {
     var start = this.state.list[0].props.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
+    if (index > 0) {
+      document.getElementById('scrollup').style.visibility = 'visible';
+    }
     index += 7;
     var end = index + 7;
     if (index > this.state.fullList.length - 1) {
@@ -128,9 +132,9 @@ class ImageGallery extends React.Component {
     return (
       <div className="gallery">
         <div>
-          <button onClick={this.listScrollUp.bind(this)}>^</button>
+          <button id="scrollup" style={{visibility: 'hidden'}} onClick={this.listScrollUp.bind(this)}>^</button>
           {this.state.list}
-          <button onClick={this.listScrollDown.bind(this)}>v</button>
+          <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
         </div>
         <div className="img">
           <button onClick={this.buttonPrev.bind(this)} style={{height: '25px'}}>&lt;</button>
