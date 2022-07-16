@@ -63,6 +63,14 @@ app.post('/qa/answers/report', (req, res) => {
   .then(result => res.status(204).send('Reported'))
 })
 
+app.post('/qa/questions/add', (req, res) => {
+  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
+  console.log('THIS IS THE REQ: ', req);
+  axios.post(`${url}/qa/questions`)
+  .then(result => console.log(result))
+  .catch(err => res.sendStatus(500))
+})
+
 app.listen(port, () => {
   console.log('listening on port: ', port);
 });

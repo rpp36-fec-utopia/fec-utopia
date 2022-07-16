@@ -1,21 +1,34 @@
 import React from 'react';
 import axios from 'axios';
 
-function QuestionsModal(props) {
+class QuestionsModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      body: "",
+      name: "",
+      email: ""
+    };
+  }
 
-  if (props.show === false) {
-    return null;
-  } else {
-    return <form className="questionsModal">
-      <h3>ASK YOUR QUESTION</h3>
-      <span>about "insert item"</span>
+  render() {
+    if (this.props.show === false) {
+      return null;
+    } else {
+      return <div className="questionsModal">
+        <h3>ASK YOUR QUESTION</h3>
+        <span>about {this.props.name}</span>
 
-      <div>
-        <input placeholder="Your Question"></input>
-        <input placeholder="Your Nickname"></input>
-        <input placeholder="Your E-Mail"></input>
-      </div>
-      </form>
+        <div className="questionForm">
+          <input placeholder="Your Question"></input>
+          <input placeholder="Your Nickname"></input>
+          <input placeholder="Your E-Mail"></input>
+        </div>
+        <div>
+          <button>Submit Question</button>
+        </div>
+        </div>
+    }
   }
 }
 
