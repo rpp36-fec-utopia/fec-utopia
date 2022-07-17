@@ -15,6 +15,18 @@ app.get('/products', (req, res) => {
   .then(result => res.send(result.data))
 })
 
+app.post('/reviews/meta', (req, res) => {
+  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
+  axios.get(`${url}/reviews/meta?product_id=${req.body['product_id']}`)
+   .then((result) => {
+    console.log('these are the results', result)
+    res.status(200).send(result)
+   })
+   .catch((err) => {
+    res.sendStatus(500)
+   })
+})
+
 app.post('/products/related', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.get(`${url}/products/${req.body['product_id']}/related`)

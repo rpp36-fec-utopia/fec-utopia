@@ -27,7 +27,9 @@ class App extends React.Component {
       <div>
         <h1>Project Atelier</h1>
         <Overview id={this.state.currentProductID}/>
-        <RelatedProducts currId={this.state.currentProductID} products={this.state.products}/>
+        <RelatedProducts
+        currId={this.state.currentProductID}
+        products={this.state.products}/>
         <QASection id={this.state.currentProductID}/>
       </div>
     )
