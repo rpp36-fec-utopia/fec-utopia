@@ -26,7 +26,12 @@ class Overview extends React.Component {
     }
   }
   getData() {
-    axios.post('/products/id', {product_id: this.props.id})
+    axios({
+      method: 'get',
+      baseUrl: 'localhost:3000',
+      url: '/products/id',
+      params: {id: this.props.id},
+    })
     .then(result => {
       var prodInfo = {
         name: result.data.name,
@@ -72,7 +77,7 @@ class Overview extends React.Component {
     return(
   <div className="overview">
     <ProductInformation info={this.state.info} price={this.state.currStyle.original_price} sale={this.state.currStyle.sale_price}/>
-    <ImageGallery style={this.state.currStyle.photos}/>
+    <ImageGallery style={this.state.currStyle.photos} id={this.state.currStyleId}/>
     <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)}/>
     <AddToCart style={this.state.currStyle.skus}/>
     <ProductInformationFreetext slogan={this.state.info.slogan} desc={this.state.info.description} feats={this.state.info.features}/>
@@ -81,3 +86,8 @@ class Overview extends React.Component {
 }
 
 export default Overview;
+
+// highlight selected thumbnail
+// switching styles should maintain current thumbnail index
+// up/down arrow not same as next/prev arrow
+// box-shadow: 0px 5px

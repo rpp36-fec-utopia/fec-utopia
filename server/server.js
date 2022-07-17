@@ -43,6 +43,19 @@ app.post('/products/id', (req, res) => {
   .catch(err => res.sendStatus(500))
 })
 
+app.get('/products/id', (req, res) => {
+  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
+  axios({
+    baseURL: url,
+    url: `/products/${req.query.id}`,
+    method: 'get',
+  }).then ((result) => {
+    res.send(result.data);
+  }).catch((err) => {
+    res.sendStatus(500);
+  })
+})
+
 app.post('/products/styles', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.get(`${url}/products/${req.body['product_id']}/styles`)
@@ -73,6 +86,18 @@ app.post('/qa/answers/report', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.put(`${url}/qa/answers/${req.body['answers_id']}/report`)
   .then(result => res.status(204).send('Reported'))
+})
+
+app.post('/qa/questions/add', (req, res) => {
+  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
+  axios.post(`${url}/qa/questions`, {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+    product_id: req.body.product_id
+  })
+  .then(result => res.sendStatus(201))
+  .catch(err => res.sendStatus(500))
 })
 
 app.listen(port, () => {
