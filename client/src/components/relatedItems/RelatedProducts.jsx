@@ -51,7 +51,8 @@ class RelatedProducts extends React.Component {
         <RelatedItems
         items={this.props.products}
         id={this.props.currentProductID}
-        relIds={this.state.relatedIds}/>
+        relIds={this.state.relatedIds}
+        changeProduct={this.props.changeProduct}/>
 
         </div>
         <div className='currOutfit'>

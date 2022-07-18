@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RelatedItems = ({items, id, relIds}) => {
+const RelatedItems = ({items, id, relIds, changeProduct}) => {
   var allData = []
 
     relIds.forEach((item) => {
@@ -13,17 +13,17 @@ const RelatedItems = ({items, id, relIds}) => {
 
     console.log('allData', allData)
 
-    var handleClick = () => {
-      console.log('the card has been clicked')
-      // needs to navigate to a page where the clicked product is now the featured product, may need to put this in App and pass it down
+    // var handleClick = (e) => {
+    //   console.log('the card has been clicked')
+    //   // needs to navigate to a page where the clicked product is now the featured product, may need to put this in App and pass it down
 
-      // I want to lift this up to the parent component so that it can actively change the current product in the overview.
-    }
+    //   // I want to lift this up to the parent component so that it can actively change the current product in the overview.
+    // }
 
 
   const related = allData.map((item, i) => {
     return (
-      <div key={i} className='card' onClick={handleClick}>
+      <div key={i} className='card' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>
        <img className='relImg' src={item.itemStyles[0].photos[0].thumbnail_url}></img>
          <p className='category'>{item.itemData.category}</p>
          <p className='prodName'>{item.itemData.name}</p>
