@@ -1,14 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+import AnswersModal from './AnswersModal.jsx';
 
 class HelpfulAnswer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpful: 0
+      helpful: 0,
+      answersModal: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.incrementHelpful = this.incrementHelpful.bind(this);
+    this.showAnswersModal = this.showAnswersModal.bind(this);
+    this.hideAnswersModal = this.hideAnswersModal.bind(this);
   }
 
   componentDidMount() {
@@ -31,12 +35,28 @@ class HelpfulAnswer extends React.Component {
     })
   }
 
+  showAnswersModal() {
+    this.setState({
+      answersModal: true
+    })
+  }
+
+  hideAnswersModal() {
+    this.setState({
+      answersModal: false
+    })
+  }
+
   render() {
     return(
-    <div className="helpfulAnswer">
-      <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
-      <button>Add Answer</button>
-    </div>
+      <>
+      <AnswersModal hide={this.hideAnswersModal} id={this.props.id} show={this.state.answersModal}/>
+      <div className="helpfulAnswer">
+        <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
+        <div>|</div>
+        <button onClick={this.showAnswersModal} className="button">Add Answer</button>
+      </div>
+      </>
     )
   }
 }
