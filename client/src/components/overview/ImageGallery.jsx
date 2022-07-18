@@ -144,7 +144,13 @@ class ImageGallery extends React.Component {
     });
   }
   imgClick(e) {
-    console.log('clicked main img', e.target);
+    if (e.target.checked) {
+      document.getElementById('enlarge').style.zoom = '250%';
+      e.target.checked = !e.target.checked;
+    } else {
+      e.target.checked = !e.target.checked;
+      document.getElementById('enlarge').style.zoom = '100%';
+    }
   }
 
   render() {
@@ -157,7 +163,7 @@ class ImageGallery extends React.Component {
         </div>
         <div className="img">
           <button onClick={this.buttonPrev.bind(this)} style={{height: '25px', visibility: 'hidden'}} id="buttonPrev">&lt;</button>
-          <img className="mainImg" src={this.state.currImg} onClick={this.imgClick.bind(this)} enlarge={false}/>
+          <img className="mainImg" id="enlarge" src={this.state.currImg} onClick={this.imgClick.bind(this)} checked/>
           <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}} id="buttonNext">></button>
         </div>
       </div>)
