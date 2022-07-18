@@ -10,13 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-<<<<<<< HEAD
-      currentProductID: 0
-      // stared: false,
-=======
       currentProductID: 0,
       currentProductName: ""
->>>>>>> origin
     }
   }
 
@@ -24,14 +19,8 @@ class App extends React.Component {
     axios.get('/products')
     .then(result => this.setState({
       products: result.data,
-<<<<<<< HEAD
-      currentProductID: result.data[2].id
-    }, () => {
-      // console.log(window.location.pathname)
-=======
       currentProductID: result.data[2].id,
       currentProductName: result.data[2].name
->>>>>>> origin
     }))
   }
 
