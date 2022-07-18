@@ -5,7 +5,8 @@ class HelpfulAnswer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpful: 0
+      helpful: 0,
+      answersModal: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.incrementHelpful = this.incrementHelpful.bind(this);
@@ -35,26 +36,23 @@ class HelpfulAnswer extends React.Component {
 
   showAnswersModal() {
     this.setState({
-      questionsModal: true
+      answersModal: true
     })
   }
 
   hideAnswersModal() {
     this.setState({
-      questionsModal: false
+      answersModal: false
     })
   }
 
   render() {
     return(
-      <>
-        <AnswersModal hide={this.hideAnswersModal}/>
-        <div className="helpfulAnswer">
-          <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
-          <div>|</div>
-          <button onClick={this.showAnswersModal} className="button">Add Answer</button>
-        </div>
-      </>
+      <div className="helpfulAnswer">
+        <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
+        <div>|</div>
+        <button onClick={this.showAnswersModal} className="button">Add Answer</button>
+      </div>
     )
   }
 }

@@ -65,4 +65,4 @@ class AnswersModal extends React.Component {
   }
 }
 
-export default QuestionsModal;
+export default AnswersModal;
