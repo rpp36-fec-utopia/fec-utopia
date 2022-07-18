@@ -16,6 +16,7 @@ class ImageGallery extends React.Component {
     this.updateList.bind(this);
     this.listScrollDown.bind(this);
     this.listScrollUp.bind(this);
+    this.imgClick.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,8 +100,11 @@ class ImageGallery extends React.Component {
     index -= 7;
     var end = index + 7;
     if (index < 0) {
-      document.getElementById('scrollup').style.visibility = 'hidden';
       return;
+    }
+    if (index === 0) {
+      document.getElementById('scrollup').style.visibility = 'hidden';
+
     }
     this.setState({
       list: this.state.fullList.slice(index, end)
@@ -109,13 +113,13 @@ class ImageGallery extends React.Component {
   listScrollDown() {
     var start = this.state.list[0].props.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
-    if (index > 0) {
-      document.getElementById('scrollup').style.visibility = 'visible';
-    }
     index += 7;
     var end = index + 7;
     if (index > this.state.fullList.length - 1) {
       return;
+    }
+    if (index > 0) {
+      document.getElementById('scrollup').style.visibility = 'visible';
     }
     this.setState({
       list: this.state.fullList.slice(index, end)
@@ -125,7 +129,10 @@ class ImageGallery extends React.Component {
     var arr = this.getThumb(this.state.fullList);
     this.setState({
       fullList: arr,
-    }, () => console.log(this.state.fullList));
+    });
+  }
+  imgClick(e) {
+    console.log('clicked main img', e.target);
   }
 
   render() {
@@ -138,7 +145,7 @@ class ImageGallery extends React.Component {
         </div>
         <div className="img">
           <button onClick={this.buttonPrev.bind(this)} style={{height: '25px'}}>&lt;</button>
-          <img className="mainImg" src={this.state.currImg} />
+          <img className="mainImg" src={this.state.currImg} onClick={this.imgClick.bind(this)} enlarge={false}/>
           <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}}>></button>
         </div>
       </div>)
