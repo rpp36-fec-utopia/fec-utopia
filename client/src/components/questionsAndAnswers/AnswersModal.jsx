@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class QuestionsModal extends React.Component {
+class AnswersModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,13 +34,13 @@ class QuestionsModal extends React.Component {
   }
 
   handleSubmit() {
-    axios.post('/qa/questions/add', {
+    axios.post('/qa/answers/add', {
       body: this.state.body,
       name: this.state.name,
       email: this.state.email,
-      product_id: this.props.id
+      question_id: this.props.id
     })
-    .then(result => console.log('QUESTION ADDED'))
+    .then(result => console.log('ANSWER ADDED'))
     .then(this.props.hide)
   }
 
@@ -49,11 +49,11 @@ class QuestionsModal extends React.Component {
       return null;
     } else {
       return <div className="Modal">
-        <h3>ASK YOUR QUESTION</h3>
-        <span>about {this.props.name}</span>
+        <h3>SUBMIT YOUR ANSWER</h3>
+        <span>for this question</span>
 
         <div className="Form">
-          <input placeholder="Your Question" onChange={this.handleChange1}></input>
+          <input placeholder="Your Answer" onChange={this.handleChange1}></input>
           <input placeholder="Your Nickname" onChange={this.handleChange2}></input>
           <input placeholder="Your E-Mail" onChange={this.handleChange3}></input>
         </div>

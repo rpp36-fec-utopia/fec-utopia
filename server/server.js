@@ -88,6 +88,18 @@ app.post('/qa/questions/add', (req, res) => {
   .catch(err => res.sendStatus(500))
 })
 
+app.post('/qa/answers/add', (req, res) => {
+  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
+  console.log('HERE IS THE QUESTION ID: ', req.body.question_id)
+  axios.post(`${url}/qa/questions/${req.body.question_id}/answers`, {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email
+  })
+  .then(result => res.sendStatus(201))
+  .catch(err => res.sendStatus(500))
+})
+
 app.listen(port, () => {
   console.log('listening on port: ', port);
 });

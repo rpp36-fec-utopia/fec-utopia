@@ -9,6 +9,8 @@ class HelpfulAnswer extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.incrementHelpful = this.incrementHelpful.bind(this);
+    this.showAnswersModal = this.showAnswersModal.bind(this);
+    this.hideAnswersModal = this.hideAnswersModal.bind(this);
   }
 
   componentDidMount() {
@@ -31,13 +33,28 @@ class HelpfulAnswer extends React.Component {
     })
   }
 
+  showAnswersModal() {
+    this.setState({
+      questionsModal: true
+    })
+  }
+
+  hideAnswersModal() {
+    this.setState({
+      questionsModal: false
+    })
+  }
+
   render() {
     return(
-    <div className="helpfulAnswer">
-      <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
-      <div>|</div>
-      <button className="button">Add Answer</button>
-    </div>
+      <>
+        <AnswersModal hide={this.hideAnswersModal}/>
+        <div className="helpfulAnswer">
+          <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
+          <div>|</div>
+          <button onClick={this.showAnswersModal} className="button">Add Answer</button>
+        </div>
+      </>
     )
   }
 }

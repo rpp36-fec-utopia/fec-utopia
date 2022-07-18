@@ -127,7 +127,7 @@ h5 {
   margin-top: 10px;
 }
 
-.questionsModal {
+.Modal {
   width: 500px;
   background: white;
   border: 1px solid #ccc;
@@ -139,7 +139,7 @@ h5 {
   visibility: visible;
 }
 
-.questionForm {
+.Form {
   display: flex;
   flex-direction: column;
 }
