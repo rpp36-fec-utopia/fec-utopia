@@ -23,7 +23,7 @@ class ImageGallery extends React.Component {
     if(this.props.id !== prevProps.id) {
       var arr = this.getThumb(this.props.style);
       this.setState({
-        currImg: this.props.style[prevState.currImgIdx].thumbnail_url,
+        currImg: this.props.style[prevState.currImgIdx].url,
         currImgIdx: prevState.currImgIdx,
         list: arr.slice(0, 7),
         fullList: arr,
@@ -39,7 +39,7 @@ class ImageGallery extends React.Component {
   getThumb(link) {
     if (link) {
       return link.map((img, i) => {
-        var image = img.thumbnail_url;
+        var image = img.url;
         if (!image) {
           image = img.props.src;
         }
@@ -154,6 +154,7 @@ class ImageGallery extends React.Component {
     });
   }
   imgClick(e) {
+    console.log(this.state.list);
     if (e.target.checked) {
       document.getElementById('enlarge').style.zoom = '250%';
       document.getElementById('enlarge').setAttribute('id', 'overlayImg');
