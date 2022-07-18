@@ -58,6 +58,16 @@ class ImageGallery extends React.Component {
       currImgIdx: index,
     }, () => {
       this.updateList();
+      if (this.state.currImgIdx > 0) {
+        document.getElementById('buttonPrev').style.visibility = 'visible';
+      } else if (this.state.currImgIdx === 0) {
+        document.getElementById('buttonPrev').style.visibility = 'hidden';
+      }
+      if (this.state.currImgIdx < this.state.fullList.length - 1) {
+        document.getElementById('buttonNext').style.visibility = 'visible';
+      } else if (this.state.currImgIdx === this.state.fullList.length - 1) {
+        document.getElementById('buttonNext').style.visibility = 'hidden';
+      }
     });
   }
   buttonNext() {
@@ -146,9 +156,11 @@ class ImageGallery extends React.Component {
   imgClick(e) {
     if (e.target.checked) {
       document.getElementById('enlarge').style.zoom = '250%';
+      document.getElementById('enlarge').setAttribute('id', 'overlayImg');
       e.target.checked = !e.target.checked;
     } else {
-      document.getElementById('enlarge').style.zoom = 'normal';
+      document.getElementById('overlayImg').style.zoom = 'normal';
+      document.getElementById('overlayImg').setAttribute('id', 'enlarge');
       e.target.checked = !e.target.checked;
     }
   }
