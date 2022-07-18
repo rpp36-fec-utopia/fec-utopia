@@ -66,6 +66,12 @@ class ImageGallery extends React.Component {
     if (newIndex > this.state.fullList.length - 1) {
       return;
     }
+    if (newIndex > 0) {
+      document.getElementById('buttonPrev').style.visibility = 'visible'
+    }
+    if (newIndex === this.state.fullList.length - 1) {
+      document.getElementById('buttonNext').style.visibility = 'hidden';
+    }
     var newImg = this.state.fullList[newIndex].props.src;
     this.setState({
       currImgIdx: newIndex,
@@ -82,6 +88,12 @@ class ImageGallery extends React.Component {
     var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
     if (newIndex < 0) {
       return;
+    }
+    if (newIndex < this.state.fullList.length - 1) {
+      document.getElementById('buttonNext').style.visibility = 'visible';
+    }
+    if (newIndex === 0) {
+      document.getElementById('buttonPrev').style.visibility = 'hidden';
     }
     var newImg = this.state.fullList[newIndex].props.src;
     this.setState({
@@ -144,9 +156,9 @@ class ImageGallery extends React.Component {
           <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
         </div>
         <div className="img">
-          <button onClick={this.buttonPrev.bind(this)} style={{height: '25px'}}>&lt;</button>
+          <button onClick={this.buttonPrev.bind(this)} style={{height: '25px', visibility: 'hidden'}} id="buttonPrev">&lt;</button>
           <img className="mainImg" src={this.state.currImg} onClick={this.imgClick.bind(this)} enlarge={false}/>
-          <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}}>></button>
+          <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}} id="buttonNext">></button>
         </div>
       </div>)
   }
