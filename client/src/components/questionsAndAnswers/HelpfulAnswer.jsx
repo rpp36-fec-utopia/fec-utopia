@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import AnswersModal from './AnswersModal.jsx';
 
 class HelpfulAnswer extends React.Component {
   constructor(props) {
@@ -48,11 +49,14 @@ class HelpfulAnswer extends React.Component {
 
   render() {
     return(
+      <>
+      <AnswersModal hide={this.hideAnswersModal} id={this.props.id} show={this.state.answersModal}/>
       <div className="helpfulAnswer">
         <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
         <div>|</div>
         <button onClick={this.showAnswersModal} className="button">Add Answer</button>
       </div>
+      </>
     )
   }
 }
