@@ -86,6 +86,17 @@ h5 {
   margin-bottom: 0px;
 }
 
+.button {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
+
+.button:hover {
+  color: blue;
+  cursor: pointer;
+}
+
 .questionsList {
   display: flex;
   flex-direction: column;

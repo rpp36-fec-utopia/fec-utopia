@@ -34,8 +34,9 @@ class HelpfulAnswer extends React.Component {
   render() {
     return(
     <div className="helpfulAnswer">
-      <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
-      <button>Add Answer</button>
+      <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>
+      <div>|</div>
+      <button className="button">Add Answer</button>
     </div>
     )
   }

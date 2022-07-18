@@ -50,9 +50,9 @@ class AnswersListItem extends React.Component {
   render() {
     let button;
     if(this.state.reported === true) {
-      button = <button>Reported</button>
+      button = <button className="button">Reported</button>
     } else {
-      button = <button onClick={this.handleReport}>Report</button>
+      button = <button onClick={this.handleReport} className="button">Report</button>
     }
 
     return (
@@ -60,7 +60,7 @@ class AnswersListItem extends React.Component {
         <div>{this.props.i+1}: {this.props.answers[this.props.ans].body}</div>
         <div>
           by {this.props.answers[this.props.ans].answerer_name} | {this.state.date} |
-          <button onClick={this.handleClick}>Helpful ({this.state.helpful})</button>
+          <button onClick={this.handleClick} className="button">Helpful ({this.state.helpful})</button>|
           {button}
         </div>
       </div>
