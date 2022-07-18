@@ -148,8 +148,8 @@ class ImageGallery extends React.Component {
       document.getElementById('enlarge').style.zoom = '250%';
       e.target.checked = !e.target.checked;
     } else {
+      document.getElementById('enlarge').style.zoom = 'normal';
       e.target.checked = !e.target.checked;
-      document.getElementById('enlarge').style.zoom = '100%';
     }
   }
 
