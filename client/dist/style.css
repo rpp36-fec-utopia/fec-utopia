@@ -25,6 +25,14 @@
   width: 600px;
   object-fit: contain;
   cursor: zoom-in;
+  background-color: gray;
+}
+#overlayImg {
+  object-fit: contain;
+  cursor: crosshair;
+  top: 0;
+  z-index: 99;
+  background-color: gray;
 }
 .img {
   display: flex;
