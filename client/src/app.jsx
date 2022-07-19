@@ -11,8 +11,10 @@ class App extends React.Component {
     this.state = {
       products: [],
       currentProductID: 0,
-      currentProductName: ""
+      currentProductName: "",
+      starClicked: false,
     }
+    this.starClick.bind(this);
   }
 
   componentDidMount() {
@@ -24,13 +26,19 @@ class App extends React.Component {
     }))
   }
 
+  starClick(e) {
+    this.setState({
+      starClicked: !this.state.starClicked,
+    });
+  }
+
   render() {
     return (
       <div>
         <h1>Project Atelier</h1>
         <h3><b><u>Lo</u>g<u>o</u>  _________ </b>&#x1F50E;&#xFE0E;</h3>
         <p>SITE-WIDE ANNOUNCEMENT MESSAGE! &#8212; SALE / DISCOUNT <b>OFFER</b> &#8212; <u>NEW PRODUCT HIGHLIGHT</u></p>
-        <Overview id={this.state.currentProductID}/>
+        <Overview id={this.state.currentProductID} starClicked={this.state.starClicked} starClick={this.starClick.bind(this)}/>
         <RelatedProducts currId={this.state.currentProductID} products={this.state.products}/>
         <QASection id={this.state.currentProductID} name={this.state.currentProductName}/>
       </div>

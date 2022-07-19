@@ -10,6 +10,12 @@ class AddToCart extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.starClicked !== prevProps.starClicked) {
+      this.starHeart(this.props.starClicked);
+    }
+  }
+
   sizeOptions(ops) {
     if (ops) {
       var sizes = Object.values(ops).map((item, i) => {
@@ -56,6 +62,14 @@ class AddToCart extends React.Component {
     }
   }
 
+  starHeart(bool) {
+    if (!bool) {
+      document.getElementById('save').innerHTML = '&#9734;';
+    } else {
+      document.getElementById('save').innerHTML = '&#9825;';
+    }
+  }
+
   render() {
     return(
       <div className="cart">
@@ -71,7 +85,7 @@ class AddToCart extends React.Component {
         </div>
         <div id="addToCart">
           <button onClick={this.addToCart.bind(this)}>Add to Cart</button>
-          <button>star</button>
+          <button id="save" onClick={this.props.starClick}> &#9734;</button>
         </div>
       </div>
     )
