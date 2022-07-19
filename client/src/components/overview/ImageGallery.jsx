@@ -16,13 +16,14 @@ class ImageGallery extends React.Component {
     this.updateList.bind(this);
     this.listScrollDown.bind(this);
     this.listScrollUp.bind(this);
+    this.imgClick.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(this.props.id !== prevProps.id) {
       var arr = this.getThumb(this.props.style);
       this.setState({
-        currImg: this.props.style[prevState.currImgIdx].thumbnail_url,
+        currImg: this.props.style[prevState.currImgIdx].url,
         currImgIdx: prevState.currImgIdx,
         list: arr.slice(0, 7),
         fullList: arr,
@@ -38,7 +39,7 @@ class ImageGallery extends React.Component {
   getThumb(link) {
     if (link) {
       return link.map((img, i) => {
-        var image = img.thumbnail_url;
+        var image = img.url;
         if (!image) {
           image = img.props.src;
         }
@@ -57,6 +58,16 @@ class ImageGallery extends React.Component {
       currImgIdx: index,
     }, () => {
       this.updateList();
+      if (this.state.currImgIdx > 0) {
+        document.getElementById('buttonPrev').style.visibility = 'visible';
+      } else if (this.state.currImgIdx === 0) {
+        document.getElementById('buttonPrev').style.visibility = 'hidden';
+      }
+      if (this.state.currImgIdx < this.state.fullList.length - 1) {
+        document.getElementById('buttonNext').style.visibility = 'visible';
+      } else if (this.state.currImgIdx === this.state.fullList.length - 1) {
+        document.getElementById('buttonNext').style.visibility = 'hidden';
+      }
     });
   }
   buttonNext() {
@@ -64,6 +75,12 @@ class ImageGallery extends React.Component {
     var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
     if (newIndex > this.state.fullList.length - 1) {
       return;
+    }
+    if (newIndex > 0) {
+      document.getElementById('buttonPrev').style.visibility = 'visible'
+    }
+    if (newIndex === this.state.fullList.length - 1) {
+      document.getElementById('buttonNext').style.visibility = 'hidden';
     }
     var newImg = this.state.fullList[newIndex].props.src;
     this.setState({
@@ -82,6 +99,12 @@ class ImageGallery extends React.Component {
     if (newIndex < 0) {
       return;
     }
+    if (newIndex < this.state.fullList.length - 1) {
+      document.getElementById('buttonNext').style.visibility = 'visible';
+    }
+    if (newIndex === 0) {
+      document.getElementById('buttonPrev').style.visibility = 'hidden';
+    }
     var newImg = this.state.fullList[newIndex].props.src;
     this.setState({
       currImgIdx: newIndex,
@@ -99,8 +122,11 @@ class ImageGallery extends React.Component {
     index -= 7;
     var end = index + 7;
     if (index < 0) {
-      document.getElementById('scrollup').style.visibility = 'hidden';
       return;
+    }
+    if (index === 0) {
+      document.getElementById('scrollup').style.visibility = 'hidden';
+
     }
     this.setState({
       list: this.state.fullList.slice(index, end)
@@ -109,13 +135,13 @@ class ImageGallery extends React.Component {
   listScrollDown() {
     var start = this.state.list[0].props.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
-    if (index > 0) {
-      document.getElementById('scrollup').style.visibility = 'visible';
-    }
     index += 7;
     var end = index + 7;
     if (index > this.state.fullList.length - 1) {
       return;
+    }
+    if (index > 0) {
+      document.getElementById('scrollup').style.visibility = 'visible';
     }
     this.setState({
       list: this.state.fullList.slice(index, end)
@@ -125,7 +151,19 @@ class ImageGallery extends React.Component {
     var arr = this.getThumb(this.state.fullList);
     this.setState({
       fullList: arr,
-    }, () => console.log(this.state.fullList));
+    });
+  }
+  imgClick(e) {
+    console.log(this.state.list);
+    if (e.target.checked) {
+      document.getElementById('enlarge').style.zoom = '250%';
+      document.getElementById('enlarge').setAttribute('id', 'overlayImg');
+      e.target.checked = !e.target.checked;
+    } else {
+      document.getElementById('overlayImg').style.zoom = 'normal';
+      document.getElementById('overlayImg').setAttribute('id', 'enlarge');
+      e.target.checked = !e.target.checked;
+    }
   }
 
   render() {
@@ -137,9 +175,9 @@ class ImageGallery extends React.Component {
           <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
         </div>
         <div className="img">
-          <button onClick={this.buttonPrev.bind(this)} style={{height: '25px'}}>&lt;</button>
-          <img className="mainImg" src={this.state.currImg} />
-          <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}}>></button>
+          <button onClick={this.buttonPrev.bind(this)} style={{height: '25px', visibility: 'hidden'}} id="buttonPrev">&lt;</button>
+          <img className="mainImg" id="enlarge" src={this.state.currImg} onClick={this.imgClick.bind(this)} checked/>
+          <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}} id="buttonNext">></button>
         </div>
       </div>)
   }
