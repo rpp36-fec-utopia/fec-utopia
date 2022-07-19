@@ -27,8 +27,6 @@ class App extends React.Component {
   }
 
   starClick(e) {
-    console.log('star was clicked', e.target);
-    e.target.textContent = 'hi';
     this.setState({
       starClicked: !this.state.starClicked,
     });
