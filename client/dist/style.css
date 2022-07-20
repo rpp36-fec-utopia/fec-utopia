@@ -63,7 +63,8 @@
   width: 40px;
 }
 #size {
-  padding: 10px 12px;
+  padding: 10px 11px;
+  margin-right: 2px;;
 }
 .addToCart {
   font-size: 12px;
