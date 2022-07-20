@@ -169,7 +169,7 @@ class ImageGallery extends React.Component {
   render() {
     return (
       <div className="gallery">
-        <div>
+        <div id="thumbList">
           <button id="scrollup" style={{visibility: 'hidden'}} onClick={this.listScrollUp.bind(this)}>^</button>
           {this.state.list}
           <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
