@@ -154,7 +154,7 @@ class ImageGallery extends React.Component {
     });
   }
   imgClick(e) {
-    console.log(this.state.list);
+    // console.log(this.state.list);
     if (e.target.checked) {
       document.getElementById('enlarge').style.zoom = '250%';
       document.getElementById('enlarge').setAttribute('id', 'overlayImg');

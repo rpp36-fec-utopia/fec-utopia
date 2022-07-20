@@ -32,7 +32,7 @@
   cursor: crosshair;
   top: 0;
   z-index: 99;
-  /* background-color: gray; */
+  background-color: gray;
 }
 .img {
   display: flex;
@@ -46,8 +46,8 @@
   object-fit: cover;
   flex-direction: column;
   cursor: pointer;
-  margin: 5px;
-  background-color: gray;
+  margin: 8px;
+  background-color: rgba(gray, 0.3);
 }
 .cart {
   margin-right: 70px;
