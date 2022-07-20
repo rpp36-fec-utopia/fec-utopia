@@ -67,15 +67,16 @@
 }
 .addToCart {
   font-size: 12px;
-  padding: 10px 25px;
+  padding: 10px 24px;
   border: 1px solid grey;
   height: 40px;
-  margin-right: 2px;
+  margin-right: 1px;
 }
 #save {
   padding: 8px 12px;
   border: 1px solid grey;
   height: 40px;
+  width: 40px;
   margin-top: 3px;
 }
 
