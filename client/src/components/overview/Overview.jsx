@@ -14,11 +14,8 @@ class Overview extends React.Component {
       style: {},
       currStyleId: null,
       currStyle: {},
-<<<<<<< HEAD
       currStyleIndex: null,
-=======
       ratings: [],
->>>>>>> origin
   }
   this.styleClick.bind(this);
 }
@@ -70,7 +67,7 @@ class Overview extends React.Component {
             currStyle: style,
             currStyleId: style.style_id,
             currStyleIndex: i,
-          }, () => document.getElementsByClassName('styleThumbnail')[i].setAttribute('id', 'selectedStyle'));
+          });
         }})
       var styles = {
         results: result.data.results,
@@ -83,17 +80,10 @@ class Overview extends React.Component {
 
   styleClick(e, i) {
     var style = this.state.style.results.find(res => res.style_id === e);
-    var prevIndex = this.state.currStyleIndex;
-    var doc = document.getElementsByClassName('styleThumbnail')[i];
-    var pDoc = document.getElementsByClassName('styleThumbnail')[prevIndex];
-    console.log(prevIndex, i);
     this.setState({
       currStyleId: e,
       currStyle: style,
       currStyleIndex: i,
-    }, () => {
-      doc.setAttribute('id', 'selectedStyle');
-      pDoc.removeAttribute('id');
     });
   }
 
@@ -102,7 +92,7 @@ class Overview extends React.Component {
   <div className="overview">
     <ProductInformation info={this.state.info} price={this.state.currStyle.original_price} sale={this.state.currStyle.sale_price} ratings={this.state.ratings}/>
     <ImageGallery style={this.state.currStyle.photos} id={this.state.currStyleId}/>
-    <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)}/>
+    <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)} currStyleIndex={this.state.currStyleIndex}/>
     <AddToCart style={this.state.currStyle.skus} starClicked={this.props.starClicked} starClick={this.props.starClick}/>
     <ProductInformationFreetext slogan={this.state.info.slogan} desc={this.state.info.description} feats={this.state.info.features}/>
   </div>);
@@ -112,6 +102,4 @@ class Overview extends React.Component {
 export default Overview;
 
 // highlight selected thumbnail
-// switching styles should maintain current thumbnail index
-// up/down arrow not same as next/prev arrow
 // box-shadow: 0px 5px
