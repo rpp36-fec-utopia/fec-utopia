@@ -11,6 +11,10 @@ class RelatedProducts extends React.Component {
     }
   }
 
+  // I'm going to need to get the rating from the reviews API
+  // pass the ratings down as props
+  // and then parse them into star rating form
+
   componentDidUpdate(prevProps) {
     if (this.props.currId !== prevProps.currId) {
     axios.post(`/products/related`, {product_id: this.props.currId})
@@ -42,12 +46,20 @@ class RelatedProducts extends React.Component {
     return (
       <div className='related'>
         <div className='relSection'>
-        <h4>Related Products</h4>
-        <RelatedItems items={this.props.products} id={this.props.currentProductID} relIds={this.state.relatedIds}/>
+        <h4 className='relatedHeader'>Related Products</h4>
+
+        <RelatedItems
+        items={this.props.products}
+        id={this.props.currentProductID}
+        relIds={this.state.relatedIds}
+        changeProduct={this.props.changeProduct}/>
+
         </div>
         <div className='currOutfit'>
         <h4>Your Outfit</h4>
+
         <Outfit />
+
         </div>
       </div>
     )

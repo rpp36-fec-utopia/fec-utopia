@@ -261,3 +261,8 @@ h5 {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.relatedHeader {
+  text-align: center;
+
+}
