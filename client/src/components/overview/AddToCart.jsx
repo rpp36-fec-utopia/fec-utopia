@@ -57,7 +57,7 @@ class AddToCart extends React.Component {
   addToCart() {
     if (!this.state.size) {
       alert('please select a size');
-    } else if (!this.state.defaultQuant) {
+    } else if (!this.state.defaultQuant || this.state.defaultQuant === '-') {
       alert('please select a quantity')
     }
   }

@@ -27,6 +27,7 @@
   cursor: zoom-in;
   background-color: rgba(63 63 63 / 40%);
 }
+
 #overlayImg {
   object-fit: contain;
   cursor: crosshair;
@@ -34,6 +35,7 @@
   z-index: 99;
   background-color: gray;
 }
+
 .img {
   display: flex;
   flex-direction: row;
@@ -48,24 +50,29 @@
   cursor: pointer;
   margin: 8px;
 }
+
 #thumbList {
   background-color: rgba(63 63 63 / 40%);
 }
+
 .cart {
   margin-right: 50px;
   margin-left: auto;
   width: 175px;
   height: 75px;;
 }
+
 #defaultQuant {
   padding: 10px 5px;
   height: 40px;
   width: 40px;
 }
+
 #size {
   padding: 10px 11px;
   margin-right: 2px;;
 }
+
 .addToCart {
   font-size: 12px;
   padding: 10px 24px;
@@ -73,12 +80,21 @@
   height: 40px;
   margin-right: 1px;
 }
+
+.addToCart:active {
+  background-color: rgba(73, 126, 240, 0.61);
+}
+
 #save {
   padding: 8px 12px;
   border: 1px solid grey;
   height: 40px;
   width: 40px;
   margin-top: 3px;
+}
+
+#save:active {
+  background-color: rgba(73, 126, 240, 0.61);
 }
 
 .styleSel {
