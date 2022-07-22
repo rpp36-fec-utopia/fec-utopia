@@ -154,7 +154,7 @@ class ImageGallery extends React.Component {
     });
   }
   imgClick(e) {
-    console.log(this.state.list);
+    // console.log(this.state.list);
     if (e.target.checked) {
       document.getElementById('enlarge').style.zoom = '250%';
       document.getElementById('enlarge').setAttribute('id', 'overlayImg');
@@ -169,7 +169,7 @@ class ImageGallery extends React.Component {
   render() {
     return (
       <div className="gallery">
-        <div>
+        <div id="thumbList">
           <button id="scrollup" style={{visibility: 'hidden'}} onClick={this.listScrollUp.bind(this)}>^</button>
           {this.state.list}
           <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
