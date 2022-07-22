@@ -14,9 +14,12 @@ class Overview extends React.Component {
       style: {},
       currStyleId: null,
       currStyle: {},
+<<<<<<< HEAD
       currStyleIndex: null,
+=======
+      ratings: [],
+>>>>>>> origin
   }
-  // bind func here
   this.styleClick.bind(this);
 }
 
@@ -32,8 +35,7 @@ class Overview extends React.Component {
       baseUrl: 'localhost:3000',
       url: '/products/id',
       params: {id: this.props.id},
-    })
-    .then(result => {
+    }).then(result => {
       var prodInfo = {
         name: result.data.name,
         category: result.data.category,
@@ -45,6 +47,17 @@ class Overview extends React.Component {
       this.setState({
         info: prodInfo,
       });
+    }).then((result) => {
+      axios({
+        method: 'get',
+        baseUrl: 'localhost:3000',
+        url: '/reviews/star',
+        params: {product_id: this.props.id},
+      }).then((result) => {
+        this.setState({
+          ratings: result.data.ratings,
+        })
+      })
     })
   }
   getStyles() {
@@ -87,7 +100,7 @@ class Overview extends React.Component {
   render() {
     return(
   <div className="overview">
-    <ProductInformation info={this.state.info} price={this.state.currStyle.original_price} sale={this.state.currStyle.sale_price}/>
+    <ProductInformation info={this.state.info} price={this.state.currStyle.original_price} sale={this.state.currStyle.sale_price} ratings={this.state.ratings}/>
     <ImageGallery style={this.state.currStyle.photos} id={this.state.currStyleId}/>
     <StyleSelector style={this.state.style.results} name={this.state.currStyle} onClick={this.styleClick.bind(this)}/>
     <AddToCart style={this.state.currStyle.skus} starClicked={this.props.starClicked} starClick={this.props.starClick}/>
