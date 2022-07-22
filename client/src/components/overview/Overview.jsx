@@ -14,6 +14,7 @@ class Overview extends React.Component {
       style: {},
       currStyleId: null,
       currStyle: {},
+      currStyleIndex: null,
   }
   // bind func here
   this.styleClick.bind(this);
@@ -49,12 +50,14 @@ class Overview extends React.Component {
   getStyles() {
     axios.post('/products/styles', {product_id: this.props.id})
     .then(result => {
-      result.data.results.map(style => {
+      console.log(result);
+      result.data.results.map((style, i) => {
         if (style['default?']) {
           this.setState({
             currStyle: style,
             currStyleId: style.style_id,
-          })
+            currStyleIndex: i,
+          }, () => document.getElementsByClassName('styleThumbnail')[i].setAttribute('id', 'selectedStyle'));
         }})
       var styles = {
         results: result.data.results,
@@ -65,11 +68,19 @@ class Overview extends React.Component {
     })
   }
 
-  styleClick(e) {
+  styleClick(e, i) {
     var style = this.state.style.results.find(res => res.style_id === e);
+    var prevIndex = this.state.currStyleIndex;
+    var doc = document.getElementsByClassName('styleThumbnail')[i];
+    var pDoc = document.getElementsByClassName('styleThumbnail')[prevIndex];
+    console.log(prevIndex, i);
     this.setState({
       currStyleId: e,
       currStyle: style,
+      currStyleIndex: i,
+    }, () => {
+      doc.setAttribute('id', 'selectedStyle');
+      pDoc.removeAttribute('id');
     });
   }
 
