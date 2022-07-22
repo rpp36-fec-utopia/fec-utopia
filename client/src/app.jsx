@@ -49,9 +49,10 @@ class App extends React.Component {
         <h3><b><u>Lo</u>g<u>o</u>  _________ </b>&#x1F50E;&#xFE0E;</h3>
         <p>SITE-WIDE ANNOUNCEMENT MESSAGE! &#8212; SALE / DISCOUNT <b>OFFER</b> &#8212; <u>NEW PRODUCT HIGHLIGHT</u></p>
         <Overview id={this.state.currentProductID} starClicked={this.state.starClicked} starClick={this.starClick.bind(this)}/>
-        <RelatedProducts currId={this.state.currentProductID} products={this.state.products}/>
+        <RelatedProducts currName={this.state.currentProductName} currId={this.state.currentProductID} products={this.state.products} starClicked={this.state.starClicked} changeProduct={this.changeProduct}/>
+        <ErrorBoundary>
         <QASection id={this.state.currentProductID} name={this.state.currentProductName}/>
-        {/* </ErrorBoundary> */}
+        </ErrorBoundary>
       </div>
     )
   }

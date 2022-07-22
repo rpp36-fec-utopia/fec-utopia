@@ -56,9 +56,9 @@ class RelatedProducts extends React.Component {
 
         </div>
         <div className='currOutfit'>
-        <h4>Your Outfit</h4>
+        <h4 className='relatedHeader'>Your Outfit</h4>
 
-        <Outfit />
+        <Outfit starClicked={this.props.starClicked} currId={this.props.currId} currName={this.props.currName}/>
 
         </div>
       </div>
