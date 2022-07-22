@@ -57,7 +57,7 @@ class AddToCart extends React.Component {
   addToCart() {
     if (!this.state.size) {
       alert('please select a size');
-    } else if (!this.state.defaultQuant) {
+    } else if (!this.state.defaultQuant || this.state.defaultQuant === '-') {
       alert('please select a quantity')
     }
   }
@@ -83,8 +83,8 @@ class AddToCart extends React.Component {
             {this.quantOptions(this.props.style, this.state.size)}
           </select>
         </div>
-        <div id="addToCart">
-          <button onClick={this.addToCart.bind(this)}>Add to Cart</button>
+        <div>
+          <button className="addToCart" onClick={this.addToCart.bind(this)}>Add to Cart</button>
           <button id="save" onClick={this.props.starClick}> &#9734;</button>
         </div>
       </div>
