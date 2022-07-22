@@ -15,11 +15,7 @@ class App extends React.Component {
       currentProductName: "",
       starClicked: false,
     }
-<<<<<<< HEAD
-    this.starClick.bind(this);
-=======
     this.changeProduct = this.changeProduct.bind(this)
->>>>>>> d3b97eb23a4047ae6b23056ea65e28a52ddb907f
   }
 
   changeProduct(prodId, prodName) {
@@ -52,10 +48,6 @@ class App extends React.Component {
         <h1>Project Atelier</h1>
         <h3><b><u>Lo</u>g<u>o</u>  _________ </b>&#x1F50E;&#xFE0E;</h3>
         <p>SITE-WIDE ANNOUNCEMENT MESSAGE! &#8212; SALE / DISCOUNT <b>OFFER</b> &#8212; <u>NEW PRODUCT HIGHLIGHT</u></p>
-<<<<<<< HEAD
-        <Overview id={this.state.currentProductID} starClicked={this.state.starClicked} starClick={this.starClick.bind(this)}/>
-        <RelatedProducts currId={this.state.currentProductID} products={this.state.products}/>
-=======
         <ErrorBoundary>
         <Overview id={this.state.currentProductID}/>
         </ErrorBoundary>
@@ -63,7 +55,6 @@ class App extends React.Component {
         <RelatedProducts currId={this.state.currentProductID} products={this.state.products} changeProduct={this.changeProduct}/>
         </ErrorBoundary>
         <ErrorBoundary>
->>>>>>> d3b97eb23a4047ae6b23056ea65e28a52ddb907f
         <QASection id={this.state.currentProductID} name={this.state.currentProductName}/>
         </ErrorBoundary>
       </div>
