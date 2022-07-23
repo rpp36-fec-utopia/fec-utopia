@@ -34,7 +34,11 @@ class AddToCart extends React.Component {
       var item = Object.values(ops).find(item => item.size === size);
       var arr = [];
       for (var i = 1; i <= item.quantity && i <= 15; i++) {
-        arr.push(<option key={i}>{i}</option>);
+        if (i === 1) {
+          arr.push(<option key={i} selected>{i}</option>);
+        } else {
+          arr.push(<option key={i}>{i}</option>);
+        }
       }
       return arr;
     } else if (size === 'Select Size') {
@@ -43,12 +47,16 @@ class AddToCart extends React.Component {
   }
 
   onChange(e) {
+    if (e.target.id === 'size' && (this.state.size === null || this.state.size === 'Select Size')) {
+      this.setState({
+        defaultQuant: '1',
+      });
+    }
     this.setState({
       [e.target.id]: e.target.value,
     });
     if (e.target.id === 'size' && e.target.value === 'Select Size') {
       this.setState({
-        // size: null,
         defaultQuant: null,
       });
     }
