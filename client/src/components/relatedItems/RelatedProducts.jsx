@@ -2,6 +2,7 @@ import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 import Outfit from './Outfit.jsx';
 import axios from 'axios';
+import Comparison from './Comparison.jsx'
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -10,10 +11,6 @@ class RelatedProducts extends React.Component {
       relatedIds: []
     }
   }
-
-  // I'm going to need to get the rating from the reviews API
-  // pass the ratings down as props
-  // and then parse them into star rating form
 
   componentDidUpdate(prevProps) {
     if (this.props.currId !== prevProps.currId) {
@@ -46,7 +43,7 @@ class RelatedProducts extends React.Component {
     return (
       <div className='related'>
         <div className='relSection'>
-        <h4 className='relatedHeader'>Related Products</h4>
+        <h2 className='relatedHeader'>Related Products</h2>
 
         <RelatedItems
         items={this.props.products}
@@ -56,9 +53,16 @@ class RelatedProducts extends React.Component {
 
         </div>
         <div className='currOutfit'>
-        <h4 className='relatedHeader'>Your Outfit</h4>
+        <h2 className='relatedHeader'>Your Outfit</h2>
 
-        <Outfit starClicked={this.props.starClicked} currId={this.props.currId} currName={this.props.currName}/>
+        <Outfit
+        starClicked={this.props.starClicked}
+        currId={this.props.currId}
+        currName={this.props.currName}
+        starClick={this.props.starClick.bind(this)}
+        />
+
+        <Comparison />
 
         </div>
       </div>

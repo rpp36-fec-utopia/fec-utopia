@@ -8,10 +8,10 @@ const OutfitCard = ({outfit}) => {
   const outfits = outfitArray.map((item, i) => {
     return (
       <div key={i} className='card'>
-        {/* <img></img> */}
-        <p className='category'>{item.category}</p>
-        <p className='prodName'>{item.name}</p>
-        <p className='prodPrice'>{item.default_price}</p>
+        <img className='relImg' src={item.styles.results[0].photos[0].thumbnail_url}></img>
+        <p className='category'>{item.data.category}</p>
+        <p className='prodName'>{item.data.name}</p>
+        <p className='prodPrice'>{item.data.default_price}</p>
         <p className='rating'>★★★★★</p>
       </div>
     )

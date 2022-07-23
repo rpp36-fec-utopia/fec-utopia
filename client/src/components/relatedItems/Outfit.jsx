@@ -19,8 +19,17 @@ class Outfit extends React.Component {
         let temp = [];
         outfitIds.forEach(id => {
           axios.post('/products/id', {product_id: id})
-            .then(res => temp.push(res.data))
-            .catch(err => console.log('there was an error getting id for outfit on mount', err))
+            .then(prodInfo => {
+              axios.post('/products/styles', {product_id: id})
+               .then(prodStyles => {
+                temp.push({
+                  data: prodInfo.data,
+                  styles: prodStyles.data
+                })
+               })
+               .catch(err => console.log('there was an error getting the styles', err))
+            })
+            .catch(err => console.log('there was an error getting the data', err))
         })
         this.setState({
           outfit: temp,
@@ -38,8 +47,17 @@ class Outfit extends React.Component {
         let temp = []
         outfitIds.forEach(id => {
           axios.post('/products/id', {product_id: id})
-            .then(res => temp.push(res.data))
-            .catch(err => console.log('there was an error getting id for outfit on mount', err))
+            .then(prodInfo => {
+              axios.post('/products/styles', {product_id: id})
+               .then(prodStyles => {
+                temp.push({
+                  data: prodInfo.data,
+                  styles: prodStyles.data
+                })
+               })
+               .catch(err => console.log('there was an error getting the styles', err))
+            })
+            .catch(err => console.log('there was an error getting the data', err))
         })
         this.setState({
           outfit: temp
@@ -48,28 +66,14 @@ class Outfit extends React.Component {
     }
   }
 
-//  componentDidMount() {
-//   if (JSON.parse(localStorage.getItem('ids'))) {
-    // let outfitIds = JSON.parse(localStorage.getItem('ids'))
-    // let temp = []
-    // outfitIds.forEach(id => {
-    //   axios.post('/products/id', {product_id: id})
-    //     .then(res => temp.push(res.data))
-    //     .catch(err => console.log('there was an error getting id for outfit on mount', err))
-    // })
-    // this.setState({
-    //   outfit: temp,
-    //   notEmpty: true
-    // })
-//   }
-//  }
-
-
   render() {
     const isNotEmpty = this.state.notEmpty;
 
     return (
-      isNotEmpty ? <OutfitCard outfit={this.state.outfit} /> : <h1>No Outfit</h1>
+      <div>
+      <button className='card' onClick={this.props.starClick}> + Add To Outfit!</button>
+      {isNotEmpty ? <OutfitCard outfit={this.state.outfit} /> : <h1>No Outfit</h1>}
+      </div>
     )
   }
 }
