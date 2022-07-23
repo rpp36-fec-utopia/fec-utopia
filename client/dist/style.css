@@ -222,7 +222,8 @@ h5 {
 .related {
   background-color: lightblue;
   border: 1px solid black;
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
 }
 
 .prodName {
@@ -241,15 +242,18 @@ h5 {
 
 .card {
   border: 1px solid black;
-  justify-content: space-between;
-  /* height: 200px; */
+  justify-content: center;
   margin: 10px;
   display: inline-block;
+  width: 200px;
+  height: 400px;
+  overflow: hidden;
 }
 
 .relImg {
-
-  object-fit: contain;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
 }
 
 .rating {
@@ -258,6 +262,14 @@ h5 {
 
 .relItems {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: start;
+  overflow: scroll;
+  min-width: 0px;
 }
+
+.relatedHeader {
+  text-align: center;
+}
+
