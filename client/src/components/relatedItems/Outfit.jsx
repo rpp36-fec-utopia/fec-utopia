@@ -70,8 +70,10 @@ class Outfit extends React.Component {
     const isNotEmpty = this.state.notEmpty;
 
     return (
-      <div>
-      <button className='card' onClick={this.props.starClick}> + Add To Outfit!</button>
+      <div className='theOutfit'>
+      <div className='addToOutfit' onClick={this.props.starClick}>
+       <h3 className='addToHeader'>+ Add to Outfit</h3>
+      </div>
       {isNotEmpty ? <OutfitCard outfit={this.state.outfit} /> : <h1>No Outfit</h1>}
       </div>
     )
