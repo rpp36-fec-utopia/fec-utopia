@@ -13,6 +13,7 @@ app.get('/products', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.get(`${url}/products`)
   .then(result => res.send(result.data))
+  .catch(err => console.log('/PRODUCTS ISSUE'))
 })
 
 app.post('/reviews/meta', (req, res) => {
@@ -86,6 +87,7 @@ app.post('/qa/questions/helpful', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.put(`${url}/qa/questions/${req.body['question_id']}/helpful`)
   .then(result => res.status(204).send('Helpful'))
+  .catch(err => console.log('/HELPFUL ISSUE'))
 })
 
 app.post('/qa/answers/helpful', (req, res) => {

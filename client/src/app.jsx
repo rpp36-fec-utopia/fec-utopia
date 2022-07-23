@@ -23,9 +23,7 @@ class App extends React.Component {
       currentProductID: prodId,
       currentProductName: prodName
     })
-
   }
-
 
   componentDidMount() {
     axios.get('/products')
