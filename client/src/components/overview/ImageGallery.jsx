@@ -38,9 +38,10 @@ class ImageGallery extends React.Component {
   }
   getThumb(link) {
     if (link) {
+      console.log('err', link);
       return link.map((img, i) => {
         var image = img.url;
-        if (!image) {
+        if (!image && image !== null) {
           image = img.props.src;
         }
         if (i === this.state.currImgIdx) {

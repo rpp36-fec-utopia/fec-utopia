@@ -61,7 +61,7 @@ class Overview extends React.Component {
     axios.post('/products/styles', {product_id: this.props.id})
     .then(result => {
       result.data.results.map((style, i) => {
-        if (style['default?']) {
+        if (style['default?'] || i === 0) {
           this.setState({
             currStyle: style,
             currStyleId: style.style_id,
