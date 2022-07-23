@@ -40,8 +40,9 @@
   width: 600px;
   object-fit: contain;
   cursor: zoom-in;
-  background-color: gray;
+  background-color: rgba(63 63 63 / 40%);
 }
+
 #overlayImg {
   object-fit: contain;
   cursor: crosshair;
@@ -49,6 +50,7 @@
   z-index: 99;
   background-color: gray;
 }
+
 .img {
   display: flex;
   flex-direction: row;
@@ -61,13 +63,53 @@
   object-fit: cover;
   flex-direction: column;
   cursor: pointer;
-  margin: 5px;
+  margin: 8px;
 }
+
+#thumbList {
+  background-color: rgba(63 63 63 / 40%);
+}
+
 .cart {
-  margin-right: 70px;
+  margin-right: 50px;
   margin-left: auto;
-  width: 150px;
-  height: 50px;;
+  width: 175px;
+  height: 75px;;
+}
+
+#defaultQuant {
+  padding: 10px 5px;
+  height: 40px;
+  width: 40px;
+}
+
+#size {
+  padding: 10px 11px;
+  margin-right: 2px;;
+}
+
+.addToCart {
+  font-size: 12px;
+  padding: 10px 24px;
+  border: 1px solid grey;
+  height: 40px;
+  margin-right: 1px;
+}
+
+.addToCart:active {
+  background-color: rgba(73, 126, 240, 0.61);
+}
+
+#save {
+  padding: 8px 12px;
+  border: 1px solid grey;
+  height: 40px;
+  width: 40px;
+  margin-top: 3px;
+}
+
+#save:active {
+  background-color: rgba(73, 126, 240, 0.61);
 }
 
 .styleSel {
@@ -76,19 +118,27 @@
   width: 220px;
 }
 
-#styleThumbnail {
+.styleThumbnail {
+  position: relative;
   height: 45px;
   width: 45px;
   margin: 3px;
   border-radius: 50%;
-  border: 2px solid grey;
+  border: 1px solid black;
   object-fit: cover;
   cursor: pointer;
 }
+/*
+#selectedStyle {
+  border: 2px solid green;
+  background: rgba(black, 0.6);
+} */
 
 .prodInfo {
+  margin-right: 20px;
   width: 200px;
   float: right;
+  right: 150px;
 }
 
 .freeFormText {
