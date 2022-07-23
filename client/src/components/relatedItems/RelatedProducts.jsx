@@ -62,7 +62,7 @@ class RelatedProducts extends React.Component {
         starClick={this.props.starClick.bind(this)}
         />
 
-        <Comparison />
+        {/* <Comparison /> */}
 
         </div>
       </div>
