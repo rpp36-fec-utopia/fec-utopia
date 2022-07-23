@@ -13,6 +13,7 @@ app.get('/products', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.get(`${url}/products`)
   .then(result => res.send(result.data))
+  .catch(err => console.log('/products error!'))
 })
 
 app.post('/reviews/meta', (req, res) => {
@@ -49,9 +50,11 @@ app.get('/products/id', (req, res) => {
     baseURL: url,
     url: `/products/${req.query.id}`,
     method: 'get',
-  }).then ((result) => {
+  })
+  .then ((result) => {
     res.send(result.data);
-  }).catch((err) => {
+  })
+  .catch((err) => {
     res.sendStatus(500);
   })
 })
@@ -63,9 +66,11 @@ app.get('/reviews/star', (req, res) => {
     url: '/reviews/meta',
     method: 'get',
     params: req.query,
-  }).then((result) => {
+  })
+  .then((result) => {
     res.send(result.data);
-  }).catch(err => res.sendStatus(500));
+  })
+  .catch(err => res.sendStatus(500));
 })
 
 app.post('/products/styles', (req, res) => {
@@ -92,12 +97,14 @@ app.post('/qa/answers/helpful', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.put(`${url}/qa/answers/${req.body['answers_id']}/helpful`)
   .then(result => res.status(204).send('Helpful'))
+  .catch(err => console.log('QA helpful error!'))
 })
 
 app.post('/qa/answers/report', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN.TOKEN;
   axios.put(`${url}/qa/answers/${req.body['answers_id']}/report`)
   .then(result => res.status(204).send('Reported'))
+  .catch(err => console.log('QA report error!'))
 })
 
 app.post('/qa/questions/add', (req, res) => {
