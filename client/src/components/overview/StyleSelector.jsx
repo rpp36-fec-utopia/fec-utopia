@@ -21,7 +21,6 @@ var styles = (styles, onClick, index) => {
 var StyleSelector = (props) => (
   <div className="styleSel">
     <h4>Style > {props.name.name}</h4>
-    <br />
     <>
       {styles(props.style, props.onClick, props.currStyleIndex)}
     </>
