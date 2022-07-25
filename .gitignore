@@ -2,4 +2,7 @@ node_modules
 config.js
 bundle.js
 coverage
+*.pem
+*.sh
+.env
 # add more as needed
