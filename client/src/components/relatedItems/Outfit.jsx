@@ -12,7 +12,7 @@ class Outfit extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) { // the clicked component goes back to being unclicked on page refresh
+  componentDidUpdate(prevProps) {
     if (this.props.currId !== prevProps.currId) {
       if (JSON.parse(localStorage.getItem('ids'))) {
         let outfitIds = JSON.parse(localStorage.getItem('ids'))
@@ -26,15 +26,19 @@ class Outfit extends React.Component {
                   data: prodInfo.data,
                   styles: prodStyles.data
                 })
+                this.setState({
+                  outfit: temp,
+                  notEmpty: true
+                })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })
             .catch(err => console.log('there was an error getting the data', err))
         })
-        this.setState({
-          outfit: temp,
-          notEmpty: true
-        })
+        // this.setState({
+        //   outfit: temp,
+        //   notEmpty: true
+        // })
       }
     }
     if (this.props.starClicked !== prevProps.starClicked) {
@@ -53,6 +57,9 @@ class Outfit extends React.Component {
                 temp.push({
                   data: prodInfo.data,
                   styles: prodStyles.data
+                })
+                this.setState({
+                  outfit: temp
                 })
                })
                .catch(err => console.log('there was an error getting the styles', err))
