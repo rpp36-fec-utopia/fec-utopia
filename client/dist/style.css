@@ -57,20 +57,21 @@
 }
 
 .modal {
-  width: 1200px;
+  display: flex;
+  justify-content: center;
+  object-fit: contain;
+  width: 1400px;
   height: 800px;
   top: 25px;
   left: 75px;
   position: absolute;
   background: rgba(0, 0, 0, 0.9);
   border: 2px solid #ccc;
-  visibility: visible;
   z-index: 99;
 }
 .imgModal {
   height: 100%;
-  width: 100%;
-  object-fit: contain;
+  width: auto;
   cursor: crosshair;
 }
 .modal .button {
