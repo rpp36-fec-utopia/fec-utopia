@@ -1,4 +1,5 @@
 import React from 'react';
+import ExpandedView from './ExpandedView.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class ImageGallery extends React.Component {
       currImgIdx: 0,
       list: [],
       fullList: [],
+      modal: false,
     }
     this.thumbClick.bind(this);
     this.buttonNext.bind(this);
@@ -155,32 +157,38 @@ class ImageGallery extends React.Component {
     });
   }
   imgClick(e) {
-    // console.log(this.state.list);
-    if (e.target.checked) {
-      document.getElementById('enlarge').style.zoom = '250%';
-      document.getElementById('enlarge').setAttribute('id', 'overlayImg');
-      e.target.checked = !e.target.checked;
-    } else {
-      document.getElementById('overlayImg').style.zoom = 'normal';
-      document.getElementById('overlayImg').setAttribute('id', 'enlarge');
-      e.target.checked = !e.target.checked;
-    }
+    this.setState({
+      modal: !this.state.modal,
+    });
+    // if (e.target.checked) {
+    //   document.getElementById('enlarge').style.zoom = '250%';
+    //   document.getElementById('enlarge').setAttribute('id', 'overlayImg');
+    //   e.target.checked = !e.target.checked;
+    // } else {
+    //   document.getElementById('overlayImg').style.zoom = 'normal';
+    //   document.getElementById('overlayImg').setAttribute('id', 'enlarge');
+    //   e.target.checked = !e.target.checked;
+    // }
   }
 
   render() {
     return (
-      <div className="gallery">
-        <div id="thumbList">
-          <button id="scrollup" style={{visibility: 'hidden'}} onClick={this.listScrollUp.bind(this)}>^</button>
-          {this.state.list}
-          <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
+      <>
+        <ExpandedView vis={this.state.modal} close={this.imgClick.bind(this)} fullList={this.state.fullList} currImg={this.state.currImg}/>
+        <div className="gallery">
+          <div id="thumbList">
+            <button id="scrollup" style={{visibility: 'hidden'}} onClick={this.listScrollUp.bind(this)}>^</button>
+            {this.state.list}
+            <button id="scrolldown" onClick={this.listScrollDown.bind(this)}>v</button>
+          </div>
+          <div className="img">
+            <button onClick={this.buttonPrev.bind(this)} style={{height: '25px', visibility: 'hidden'}} id="buttonPrev">&lt;</button>
+            <img className="mainImg" id="enlarge" src={this.state.currImg} onClick={this.imgClick.bind(this)} checked/>
+            <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}} id="buttonNext">></button>
+          </div>
         </div>
-        <div className="img">
-          <button onClick={this.buttonPrev.bind(this)} style={{height: '25px', visibility: 'hidden'}} id="buttonPrev">&lt;</button>
-          <img className="mainImg" id="enlarge" src={this.state.currImg} onClick={this.imgClick.bind(this)} checked/>
-          <button onClick={this.buttonNext.bind(this)} style={{height: '25px'}} id="buttonNext">></button>
-        </div>
-      </div>)
+      </>
+    )
   }
 };
 

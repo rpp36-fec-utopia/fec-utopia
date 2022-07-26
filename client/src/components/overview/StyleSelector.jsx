@@ -5,9 +5,9 @@ var styles = (styles, onClick, index) => {
   if (styles) {
     return styles.map((style, i) => {
       //           TEMPLATES              //
-      var brFaImg = <><br/><FaRegCheckCircle style={{position: 'absolute', zIndex: '99', background: 'green', borderRadius: '50%'}}/><img key={i} className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id, i)}/></>;
+      var brFaImg = <><br/><FaRegCheckCircle style={{position: 'absolute', zIndex: '90', background: 'green', borderRadius: '50%'}}/><img key={i} className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id, i)}/></>;
 
-      var faImg = <><FaRegCheckCircle style={{position: 'absolute', zIndex: '99', background: 'green', borderRadius: '50%'}}/><img key={i} className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id, i)}/></>;
+      var faImg = <><FaRegCheckCircle style={{position: 'absolute', zIndex: '90', background: 'green', borderRadius: '50%'}}/><img key={i} className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id, i)}/></>;
 
       var brImg = <><br/><img key={i} className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={() => onClick(style.style_id, i)}/></>;
 
