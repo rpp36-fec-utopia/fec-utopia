@@ -19,7 +19,6 @@ class ExpandedView extends React.Component {
     var scaledY = y / 2.5;
     var yperc = (scaledY * 100) / e.target.height;
     var xperc = (scaledX * 100) / e.target.width;
-    console.log(x, y, scaledX, scaledY, e)
     if (!this.state.zoom) {
       document.getElementById('zoom').style.transform = `scale(2.5)`;
       document.getElementById('zoom').style.transformOrigin = `${xperc}% ${yperc}%`;
