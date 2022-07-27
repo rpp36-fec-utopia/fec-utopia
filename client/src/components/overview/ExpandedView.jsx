@@ -9,10 +9,10 @@ class ExpandedView extends React.Component {
       zoom: false,
     };
     this.itsZoominTime.bind(this);
+    this.moveitmoveit.bind(this);
   }
 
   itsZoominTime(e) {
-    // zoom here
     var x = e.clientX + e.screenX + 75;
     var y = e.clientY + e.screenY + 25;
     var scaledX = x / 2.5;
@@ -30,11 +30,19 @@ class ExpandedView extends React.Component {
     });
   }
 
+  moveitmoveit(e) {
+    if (!this.state.zoom) {
+      return null;
+    }
+    // detect move movement
+    // console.log('moving')
+  }
+
   render() { // props: vis, close, fullList, currImg
     if (this.props.vis) {
       return (
         <div className="modal" id="asdf">
-          <img className="imgModal" id="zoom" src={this.props.currImg} onClick={this.itsZoominTime.bind(this)}></img>
+          <img className="imgModal" id="zoom" src={this.props.currImg} onClick={this.itsZoominTime.bind(this)} onMouseMove={this.moveitmoveit.bind(this)}></img>
           <button className="button" onClick={this.props.close}>x</button>
         </div>
       )
