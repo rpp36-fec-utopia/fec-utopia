@@ -54,7 +54,7 @@ class ImageGallery extends React.Component {
   }
   thumbClick(e) {
     var clickedThumbLink = e.target.src;
-    var index = this.state.fullList.map((img) => img.props.src).indexOf(e.target.src);
+    var index = this.state.fullList.map((img) => img.props.src).indexOf(clickedThumbLink);
     this.setState({
       currImg: clickedThumbLink,
       currImgIdx: index,
@@ -151,8 +151,13 @@ class ImageGallery extends React.Component {
   }
   updateList() {
     var arr = this.getThumb(this.state.fullList);
+    var start = this.state.fullList.map((img) => img.props.src).indexOf(this.state.list[0].props.src);
     this.setState({
       fullList: arr,
+    }, () => {
+      this.setState({
+        list: this.state.fullList.slice(start, 7)
+      })
     });
   }
   imgClick(e) {
