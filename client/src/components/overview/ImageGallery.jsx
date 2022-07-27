@@ -35,7 +35,10 @@ class ImageGallery extends React.Component {
 
   getImg(link) {
     if (link) {
-      return link[0].url;
+      var altLink = link[0].url.split('');
+      altLink.splice(altLink.length - 33, 33);
+      altLink = altLink.join('').concat('&w=600&h=500');
+      return altLink;
     }
   }
   getThumb(link) {
@@ -44,6 +47,10 @@ class ImageGallery extends React.Component {
         var image = img.url;
         if (!image && image !== null) {
           image = img.props.src;
+          var alt = image.split('');
+          alt.splice(alt.length - 33, 33);
+          alt = alt.join('').concat('&w=75&h=75');
+          image = alt;
         }
         if (i === this.state.currImgIdx) {
         return (<img key={i} className="thumbs" style={{boxShadow: '0px 4px black'}}  src={image} onClick={this.thumbClick.bind(this)} />);
@@ -164,15 +171,6 @@ class ImageGallery extends React.Component {
     this.setState({
       modal: !this.state.modal,
     });
-    // if (e.target.checked) {
-    //   document.getElementById('enlarge').style.zoom = '250%';
-    //   document.getElementById('enlarge').setAttribute('id', 'overlayImg');
-    //   e.target.checked = !e.target.checked;
-    // } else {
-    //   document.getElementById('overlayImg').style.zoom = 'normal';
-    //   document.getElementById('overlayImg').setAttribute('id', 'enlarge');
-    //   e.target.checked = !e.target.checked;
-    // }
   }
 
   render() {
