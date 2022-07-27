@@ -22,7 +22,6 @@ class AddToCart extends React.Component {
   }
 
   sizeOptions(ops) {
-    console.log('size again')
     if (ops) {
       var sizes = Object.values(ops).map((item, i) => {
         return <option key={i}>{item.size}</option>
