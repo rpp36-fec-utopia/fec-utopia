@@ -13,6 +13,11 @@ class AddToCart extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.starClicked !== prevProps.starClicked) {
       this.starHeart(this.props.starClicked);
+    } else if (this.props.id !== prevProps.id) {
+      this.setState({
+        size: null,
+        defaultQuant: null,
+      })
     }
   }
 
@@ -21,10 +26,12 @@ class AddToCart extends React.Component {
       var sizes = Object.values(ops).map((item, i) => {
         return <option key={i}>{item.size}</option>
       });
-      if (sizes.length > 0) {
+      if (sizes.length > 0 && sizes[0].props.children) {
+        document.getElementById('size').removeAttribute('disabled');
         return sizes;
       } else {
-        return 'OUT OF STOCK';
+        document.getElementById('size').setAttribute('disabled', '');
+        return [<option key='outtaStock' selected>OUT OF STOCK</option>];
       }
     }
   }

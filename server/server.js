@@ -1,11 +1,14 @@
 const express = require('express');
 const axios = require('axios');
+const expressStaticGzip = require('express-static-gzip');
 require('dotenv').config();
 const AUTH_TOKEN = process.env.TOKEN;
 const app = express();
 const port = 3000;
 
-app.use(express.static('client/dist/'));
+app.use('/', expressStaticGzip('client/dist'));
+
+app.use(express.static('client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp`;
@@ -14,7 +17,7 @@ app.get('/products', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
   axios.get(`${url}/products`)
   .then(result => res.send(result.data))
-  .catch(err => console.log('/products error!'))
+  .catch(err => {console.log('/products error!'); res.sendStatus(500)})
 })
 
 app.post('/reviews/meta', (req, res) => {

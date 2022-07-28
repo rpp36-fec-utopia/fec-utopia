@@ -5,4 +5,5 @@ coverage
 *.pem
 *.sh
 .env
+*.gz
 # add more as needed

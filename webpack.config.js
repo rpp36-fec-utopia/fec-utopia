@@ -1,5 +1,7 @@
+var CompressionPlugin = require('compression-webpack-plugin');
+
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: __dirname + '/client/src/index.jsx',
   module: {
     rules: [
@@ -18,5 +20,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist/',
-  }
+    publicPath: '/'
+  },
+  plugins: [
+    new CompressionPlugin()
+  ]
 };
