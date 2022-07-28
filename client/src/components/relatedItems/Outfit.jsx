@@ -38,25 +38,13 @@ class Outfit extends React.Component {
                     notEmpty: true
                   })
                 })
-                // temp.push({
-                //   data: prodInfo.data,
-                //   styles: prodStyles.data
-                // })
-                // this.setState({
-                //   outfit: temp,
-                //   notEmpty: true
-                // })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })
             .catch(err => console.log('there was an error getting the data', err))
         })
-        // this.setState({
-        //   outfit: temp,
-        //   notEmpty: true
-        // })
-      }
     }
+  }
     if (this.props.starClicked !== prevProps.starClicked) {
       if (this.props.starClicked) {
         let old_data = JSON.parse(localStorage.getItem('ids')) || []
@@ -86,13 +74,6 @@ class Outfit extends React.Component {
                     notEmpty: true
                   })
                 })
-                // temp.push({
-                //   data: prodInfo.data,
-                //   styles: prodStyles.data
-                // })
-                // this.setState({
-                //   outfit: temp
-                // })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })

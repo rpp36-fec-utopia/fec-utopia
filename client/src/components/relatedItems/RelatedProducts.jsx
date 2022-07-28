@@ -8,7 +8,19 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      relatedIds: []
+      relatedIds: [],
+      comparison: false,
+      relProd: {}
+    }
+  }
+
+  closeModal() {
+    this.setState({comparison: false});
+  }
+
+  openModal(e) {
+    if (!this.state.comparison) {
+      this.setState({comparison: true, relProd: e})
     }
   }
 
@@ -37,13 +49,6 @@ class RelatedProducts extends React.Component {
                   relatedIds: temp
                 })
               })
-              // temp.push({
-              //   relItem: relItemData,
-              //   relItemStyles: relItemStyle
-              // })
-              // this.setState({
-              //   relatedIds: temp
-              // })
             })
         })
         .catch(err => console.log('there was an error getting product info', err))
@@ -65,7 +70,8 @@ class RelatedProducts extends React.Component {
         items={this.props.products}
         id={this.props.currentProductID}
         relIds={this.state.relatedIds}
-        changeProduct={this.props.changeProduct}/>
+        changeProduct={this.props.changeProduct}
+        openModal={this.openModal.bind(this)}/>
         </div>
 
         <div className='currOutfit'>
@@ -76,8 +82,13 @@ class RelatedProducts extends React.Component {
         currName={this.props.currName}
         starClick={this.props.starClick.bind(this)}
         />
+{/*
+        {this.state.comparison ? <Comparison
+        id={this.props.currId}
+        relProds={this.state.relIds}
+        closeModal={this.closeModal.bind(this)}
+        /> : null} */}
 
-        {/* <Comparison /> */}
 
         </div>
       </div>

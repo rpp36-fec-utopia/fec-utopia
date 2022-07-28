@@ -8,7 +8,6 @@ const OutfitCard = ({outfit}) => {
   let outfitArray = outfit.slice();
 
   const slideRight = () => {
-    console.log('clicked')
     var slider = document.getElementById('sliders')
     slider.scrollLeft = slider.scrollLeft + 500
   }

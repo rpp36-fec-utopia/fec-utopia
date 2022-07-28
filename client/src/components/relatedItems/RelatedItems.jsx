@@ -6,6 +6,8 @@ import starAvg from '../helpers/starAvg.js';
 const RelatedItems = ({items, id, relIds, changeProduct}) => {
   var allData = []
 
+  console.log('this is the product data', relIds)
+
     relIds.forEach((item) => {
       allData.push({
         itemData: item.relItem.data,
@@ -14,14 +16,13 @@ const RelatedItems = ({items, id, relIds, changeProduct}) => {
       })
     })
 
-    console.log('allData', allData)
+
 
     const compare = () => {
-      console.log('please tell me this works')
+      console.log('Comparison widget')
     }
 
     const slideRight = () => {
-      console.log('clicked')
       var slider = document.getElementById('slider')
       slider.scrollLeft = slider.scrollLeft + 500
     }
@@ -39,8 +40,8 @@ const RelatedItems = ({items, id, relIds, changeProduct}) => {
          <p className='prodName' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>{item.itemData.name}</p>
          <p className='prodPrice' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>{item.itemData.default_price}</p>
          <StarReview rating={starAvg(item.itemStars)}/>
-         <button onClick={compare} className='comp-btn'>Compare</button>
-         <Comparison />
+         <button onClick={this.props.openModal(item.itemData.id)} className='comp-btn'>Compare</button>
+
       </div>
     )
   })
