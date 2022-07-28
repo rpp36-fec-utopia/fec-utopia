@@ -8,10 +8,12 @@ class QASection extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      questionsModal: false
+      questionsModal: false,
+      search: "",
     };
     this.showQuestionsModal = this.showQuestionsModal.bind(this);
     this.hideQuestionsModal = this.hideQuestionsModal.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -35,19 +37,49 @@ class QASection extends React.Component {
     })
   }
 
+  handleSearch(event) {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
   render() {
-    return (
+    let searchArray = [];
+    if (this.state.search.length >= 3) {
+      for (var i = 0; i < this.state.questions.length; i++) {
+        console.log(this.state.questions[i].question_body);
+        if (this.state.questions[i].question_body.includes(this.state.search)) {
+          console.log('THIS WORKS');
+          searchArray.push(this.state.questions[i]);
+          console.log('this is searchArray:', searchArray);
+        }
+      }
+      return (
       <div className="section" data-testid="QA-Section">
         <h4>QUESTIONS AND ANSWERS</h4>
-        <input type="text" className="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
-        <QuestionsList questions={this.state.questions}/>
+        <input type="text" className="search" onChange={this.handleSearch} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
+        <QuestionsList questions={searchArray}/>
         <QuestionsModal hide={this.hideQuestionsModal} id={this.props.id} name={this.props.name} show={this.state.questionsModal}/>
         <div className="questionButtons">
           <button>More Questions</button>
           <button onClick={this.showQuestionsModal}>Add Question</button>
         </div>
       </div>
-    )
+      )
+    } else {
+      return (
+        <div className="section" data-testid="QA-Section">
+          <h4>QUESTIONS AND ANSWERS</h4>
+          <input type="text" className="search" onChange={this.handleSearch} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
+          <QuestionsList questions={this.state.questions}/>
+          <QuestionsModal hide={this.hideQuestionsModal} id={this.props.id} name={this.props.name} show={this.state.questionsModal}/>
+          <div className="questionButtons">
+            <button>More Questions</button>
+            <button onClick={this.showQuestionsModal}>Add Question</button>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
