@@ -8,14 +8,26 @@ class QuestionsList extends React.Component {
   }
 
   render() {
-    return (
-      <div className="questionsList" data-testid="Questions-List">
-        <h5>Questions List</h5>
-        {this.props.questions.map((item, i) =>
-          <QuestionsListItem question={item} key={i}/>
-        )}
-      </div>
-    );
+    let starterQuestions = [this.props.questions[0], this.props.questions[1]];
+    if (starterQuestions[0] && this.props.moreQuestions === false) {
+      return (
+        <div className="questionsList" data-testid="Questions-List">
+          <h5>Questions List</h5>
+          {starterQuestions.map((item, i) =>
+            <QuestionsListItem question={item} key={i}/>
+          )}
+        </div>
+      )
+    } else {
+      return (
+        <div className="questionsList" data-testid="Questions-List">
+          <h5>Questions List</h5>
+          {this.props.questions.map((item, i) =>
+            <QuestionsListItem question={item} key={i}/>
+          )}
+        </div>
+      );
+    }
   }
 }
 
