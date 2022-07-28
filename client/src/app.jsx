@@ -36,7 +36,7 @@ class App extends React.Component {
     }))
   }
 
-  starClick(e) {
+  starClick(bool) {
     this.setState({
       starClicked: !this.state.starClicked,
     });

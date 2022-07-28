@@ -22,14 +22,30 @@ class Outfit extends React.Component {
             .then(prodInfo => {
               axios.post('/products/styles', {product_id: id})
                .then(prodStyles => {
-                temp.push({
-                  data: prodInfo.data,
-                  styles: prodStyles.data
+                axios({
+                  method: 'get',
+                  baseUrl: 'localhost:3000',
+                  url: '/reviews/star',
+                  params: {product_id: id},
+                }).then(stars => {
+                  temp.push({
+                    data: prodInfo.data,
+                    styles: prodStyles.data,
+                    stars: stars.data.ratings
+                  })
+                  this.setState({
+                    outfit: temp,
+                    notEmpty: true
+                  })
                 })
-                this.setState({
-                  outfit: temp,
-                  notEmpty: true
-                })
+                // temp.push({
+                //   data: prodInfo.data,
+                //   styles: prodStyles.data
+                // })
+                // this.setState({
+                //   outfit: temp,
+                //   notEmpty: true
+                // })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })
@@ -54,13 +70,29 @@ class Outfit extends React.Component {
             .then(prodInfo => {
               axios.post('/products/styles', {product_id: id})
                .then(prodStyles => {
-                temp.push({
-                  data: prodInfo.data,
-                  styles: prodStyles.data
+                axios({
+                  method: 'get',
+                  baseUrl: 'localhost:3000',
+                  url: '/reviews/star',
+                  params: {product_id: id},
+                }).then(stars => {
+                  temp.push({
+                    data: prodInfo.data,
+                    styles: prodStyles.data,
+                    stars: stars.data.ratings
+                  })
+                  this.setState({
+                    outfit: temp,
+                    notEmpty: true
+                  })
                 })
-                this.setState({
-                  outfit: temp
-                })
+                // temp.push({
+                //   data: prodInfo.data,
+                //   styles: prodStyles.data
+                // })
+                // this.setState({
+                //   outfit: temp
+                // })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })

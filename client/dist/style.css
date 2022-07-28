@@ -269,8 +269,11 @@ h5 {
   flex: 1;
   flex-direction: row;
   justify-content: start;
-  overflow: scroll;
+  overflow-x: scroll;
   min-width: 0px;
+  scroll-behavior: smooth;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .relatedHeader {

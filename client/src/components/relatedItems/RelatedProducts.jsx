@@ -22,13 +22,28 @@ class RelatedProducts extends React.Component {
         .then(relItemData => {
           axios.post('/products/styles', {product_id: id})
             .then(relItemStyle => {
-              temp.push({
-                relItem: relItemData,
-                relItemStyles: relItemStyle
+              axios({
+                method: 'get',
+                baseUrl: 'localhost:3000',
+                url: '/reviews/star',
+                params: {product_id: id},
+              }).then(stars => {
+                temp.push({
+                  relItem: relItemData,
+                  relItemStyles: relItemStyle,
+                  relItemStars: stars.data.ratings
+                })
+                this.setState({
+                  relatedIds: temp
+                })
               })
-              this.setState({
-                relatedIds: temp
-              })
+              // temp.push({
+              //   relItem: relItemData,
+              //   relItemStyles: relItemStyle
+              // })
+              // this.setState({
+              //   relatedIds: temp
+              // })
             })
         })
         .catch(err => console.log('there was an error getting product info', err))
@@ -42,19 +57,19 @@ class RelatedProducts extends React.Component {
   render () {
     return (
       <div className='related'>
+
+
         <div className='relSection'>
         <h2 className='relatedHeader'>Related Products</h2>
-
         <RelatedItems
         items={this.props.products}
         id={this.props.currentProductID}
         relIds={this.state.relatedIds}
         changeProduct={this.props.changeProduct}/>
-
         </div>
+
         <div className='currOutfit'>
         <h2 className='relatedHeader'>Your Outfit</h2>
-
         <Outfit
         starClicked={this.props.starClicked}
         currId={this.props.currId}
