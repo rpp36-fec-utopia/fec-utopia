@@ -33,24 +33,12 @@ class ImageGallery extends React.Component {
     }
   }
 
-  getImg(link) {
-    if (link) {
-      var altLink = link[0].url.split('');
-      altLink.splice(altLink.length - 33, 33);
-      altLink = altLink.join('').concat('&w=600&h=500');
-      return altLink;
-    }
-  }
   getThumb(link) {
     if (link) {
       return link.map((img, i) => {
         var image = img.url;
         if (!image && image !== null) {
           image = img.props.src;
-          var alt = image.split('');
-          alt.splice(alt.length - 33, 33);
-          alt = alt.join('').concat('&w=75&h=75');
-          image = alt;
         }
         if (i === this.state.currImgIdx) {
         return (<img key={i} className="thumbs" style={{boxShadow: '0px 4px black'}}  src={image} onClick={this.thumbClick.bind(this)} />);
@@ -59,6 +47,7 @@ class ImageGallery extends React.Component {
       })
     }
   }
+
   thumbClick(e) {
     var clickedThumbLink = e.target.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(clickedThumbLink);
@@ -79,6 +68,7 @@ class ImageGallery extends React.Component {
       }
     });
   }
+
   buttonNext() {
     var newIndex = this.state.currImgIdx + 1;
     var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
@@ -96,12 +86,13 @@ class ImageGallery extends React.Component {
       currImgIdx: newIndex,
       currImg: newImg,
     }, () => {
-      this.updateList();
       if (index === this.state.list.length - 1) {
         this.listScrollDown();
       }
+      this.updateList();
     });
   }
+
   buttonPrev() {
     var newIndex = this.state.currImgIdx - 1;
     var index = this.state.list.map((img) => img.props.src).indexOf(this.state.currImg);
@@ -119,12 +110,13 @@ class ImageGallery extends React.Component {
       currImgIdx: newIndex,
       currImg: newImg,
     }, () => {
-      this.updateList();
       if (index === 0) {
         this.listScrollUp();
       }
+      this.updateList();
     });
   }
+
   listScrollUp() {
     var start = this.state.list[0].props.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
@@ -141,6 +133,7 @@ class ImageGallery extends React.Component {
       list: this.state.fullList.slice(index, end)
     });
   }
+
   listScrollDown() {
     var start = this.state.list[0].props.src;
     var index = this.state.fullList.map((img) => img.props.src).indexOf(start);
@@ -156,6 +149,7 @@ class ImageGallery extends React.Component {
       list: this.state.fullList.slice(index, end)
     });
   }
+
   updateList() {
     var arr = this.getThumb(this.state.fullList);
     var start = this.state.fullList.map((img) => img.props.src).indexOf(this.state.list[0].props.src);
@@ -163,10 +157,11 @@ class ImageGallery extends React.Component {
       fullList: arr,
     }, () => {
       this.setState({
-        list: this.state.fullList.slice(start, 7)
+        list: this.state.fullList.slice(start, start + 7)
       })
     });
   }
+
   imgClick(e) {
     this.setState({
       modal: !this.state.modal,
