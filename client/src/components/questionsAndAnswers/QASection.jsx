@@ -47,11 +47,8 @@ class QASection extends React.Component {
     let searchArray = [];
     if (this.state.search.length >= 3) {
       for (var i = 0; i < this.state.questions.length; i++) {
-        console.log(this.state.questions[i].question_body);
         if (this.state.questions[i].question_body.includes(this.state.search)) {
-          console.log('THIS WORKS');
           searchArray.push(this.state.questions[i]);
-          console.log('this is searchArray:', searchArray);
         }
       }
       return (
