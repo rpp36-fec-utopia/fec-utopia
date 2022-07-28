@@ -56,6 +56,34 @@
   flex-direction: row;
 }
 
+.modal {
+  display: flex;
+  justify-content: center;
+  object-fit: contain;
+  width: 1200px;
+  height: 800px;
+  top: 25px;
+  left: 75px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ccc;
+  z-index: 99;
+  overflow: hidden;
+}
+.imgModal {
+  cursor: crosshair;
+}
+
+.modal .button {
+  position: absolute;
+  background-color: #ccc;
+  border: 1px solid black;
+  right: 15px;
+  left: auto;
+  top: 10px;
+  cursor: pointer;
+}
+
 .thumbs {
   display: flex;
   height: 50px;
