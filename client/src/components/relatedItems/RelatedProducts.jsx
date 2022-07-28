@@ -21,6 +21,7 @@ class RelatedProducts extends React.Component {
   openModal(e) {
     if (!this.state.comparison) {
       this.setState({comparison: true, relProd: e})
+      console.log('what was clicked', e)
     }
   }
 
@@ -49,7 +50,7 @@ class RelatedProducts extends React.Component {
                   relatedIds: temp
                 })
               })
-            })
+            }).catch(err => console.log('these was an error getting the stars', err))
         })
         .catch(err => console.log('there was an error getting product info', err))
       })
@@ -82,12 +83,12 @@ class RelatedProducts extends React.Component {
         currName={this.props.currName}
         starClick={this.props.starClick.bind(this)}
         />
-{/*
+
         {this.state.comparison ? <Comparison
         id={this.props.currId}
-        relProds={this.state.relIds}
+        relProds={this.state.relatedIds}
         closeModal={this.closeModal.bind(this)}
-        /> : null} */}
+        /> : null}
 
 
         </div>
