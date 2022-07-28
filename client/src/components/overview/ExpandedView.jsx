@@ -34,8 +34,16 @@ class ExpandedView extends React.Component {
     if (!this.state.zoom) {
       return null;
     }
-    // detect move movement
-    // console.log('moving')
+
+    e.preventDefault();
+    var wx = e.screenX;
+    var wy = e.screenY;
+    var px = e.pageX;
+    var py = e.pageY;
+    var tx = -1 * ((px / 2.5) / wx) * px;
+    var ty = -1 * ((py / 2.5) / wy) * py;
+    console.log(tx, ty);
+    document.getElementById('zoom').style.transform = `scale(2.5) translate(${tx + 75}px, ${ty + 25}px)`;
   }
 
   render() { // props: vis, close, fullList, currImg
