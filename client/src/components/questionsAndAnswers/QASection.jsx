@@ -9,11 +9,14 @@ class QASection extends React.Component {
     this.state = {
       questions: [],
       questionsModal: false,
+      moreQuestions: false,
       search: "",
     };
     this.showQuestionsModal = this.showQuestionsModal.bind(this);
     this.hideQuestionsModal = this.hideQuestionsModal.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.hideMoreQuestions = this.hideMoreQuestions.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -43,7 +46,31 @@ class QASection extends React.Component {
     })
   }
 
+  showMoreQuestions() {
+    this.setState({
+      moreQuestions: true
+    })
+  }
+
+  hideMoreQuestions() {
+    this.setState({
+      moreQuestions: false
+    })
+  }
+
   render() {
+    let showMoreQuestions = <button>More Questions</button>;
+
+    if(this.state.moreQuestions === false) {
+      showMoreQuestions = <button onClick={this.showMoreQuestions}>More Questions</button>;
+    } else {
+      showMoreQuestions = <button onClick={this.hideMoreQuestions}>Less Questions</button>
+    }
+
+    if (this.state.questions.length <= 2) {
+      showMoreQuestions = <></>
+    }
+
     let searchArray = [];
     if (this.state.search.length >= 3) {
       for (var i = 0; i < this.state.questions.length; i++) {
@@ -55,7 +82,7 @@ class QASection extends React.Component {
       <div className="section" data-testid="QA-Section">
         <h4>QUESTIONS AND ANSWERS</h4>
         <input type="text" className="search" onChange={this.handleSearch} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
-        <QuestionsList questions={searchArray}/>
+        <QuestionsList questions={searchArray} moreQuestions={this.state.moreQuestions}/>
         <QuestionsModal hide={this.hideQuestionsModal} id={this.props.id} name={this.props.name} show={this.state.questionsModal}/>
         <div className="questionButtons">
           <button>More Questions</button>
@@ -68,10 +95,10 @@ class QASection extends React.Component {
         <div className="section" data-testid="QA-Section">
           <h4>QUESTIONS AND ANSWERS</h4>
           <input type="text" className="search" onChange={this.handleSearch} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
-          <QuestionsList questions={this.state.questions}/>
+          <QuestionsList questions={this.state.questions} moreQuestions={this.state.moreQuestions}/>
           <QuestionsModal hide={this.hideQuestionsModal} id={this.props.id} name={this.props.name} show={this.state.questionsModal}/>
           <div className="questionButtons">
-            <button>More Questions</button>
+            {showMoreQuestions}
             <button onClick={this.showQuestionsModal}>Add Question</button>
           </div>
         </div>
