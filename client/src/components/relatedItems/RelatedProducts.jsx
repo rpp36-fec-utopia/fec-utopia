@@ -16,18 +16,18 @@ class RelatedProducts extends React.Component {
   }
 
   closeModal() {
-    this.setState({comparison: false});
-    document.getElementById('modal-container').style.visibility = 'hidden';
+    // this.setState({comparison: false});
+    // document.getElementById('modal-container').style.visibility = 'hidden';
   }
 
   openModal(data) {
-    if (!this.state.comparison) {
-      axios.post('/products/id', {product_id: this.props.currId})
-        .then(data => {
-          this.setState({comparison: true, itemData: data, currIdFeat: data.data.features})
-        })
-      document.getElementById('modal-container').style.visibility = 'visible';
-    }
+    // if (!this.state.comparison) {
+    //   axios.post('/products/id', {product_id: this.props.currId})
+    //     .then(data => {
+    //       this.setState({comparison: true, itemData: data, currIdFeat: data.data.features})
+    //     })
+    //   document.getElementById('modal-container').style.visibility = 'visible';
+    // }
   }
 
   componentDidUpdate(prevProps) {
@@ -69,13 +69,13 @@ class RelatedProducts extends React.Component {
     return (
       <div className='related'>
 
-        <Comparison
+        {/* <Comparison
         itemData={this.state.itemData.features}
         closeModal={this.closeModal.bind(this)}
         itemName={this.state.itemData.name}
         currName={this.props.currName}
         currFeat={this.state.currIdFeat}
-        />
+        /> */}
 
 
         <div className='relSection'>

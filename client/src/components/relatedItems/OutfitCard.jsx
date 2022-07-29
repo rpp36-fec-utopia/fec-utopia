@@ -24,6 +24,11 @@ const OutfitCard = ({outfit}) => {
         <p className='prodName'>{item.data.name}</p>
         <p className='prodPrice'>{item.data.default_price}</p>
         <StarReview rating={starAvg(item.stars)} />
+        <button onClick={() => {
+          let outfitArray = JSON.parse(localStorage.getItem('ids'))
+          var new_data = outfitArray.filter(prod => prod !== item.data.id)
+          localStorage.setItem('ids', JSON.stringify(new_data))
+        }}>X</button>
       </div>
     )
   })

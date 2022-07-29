@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
 
 // class Comparison extends React.Component {
 //   constructor(props) {
@@ -23,9 +22,6 @@ import axios from 'axios'
 // }
 
 const Comparison = ({closeModal, itemData, name, currName, currFeat}) => {
-
-
-
 
 
   return (
