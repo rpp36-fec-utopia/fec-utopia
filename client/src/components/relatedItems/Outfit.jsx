@@ -11,11 +11,22 @@ class Outfit extends React.Component {
       notEmpty: false
     }
   }
-
+  //aoida
   componentDidUpdate(prevProps) {
     if (this.props.currId !== prevProps.currId) {
       if (JSON.parse(localStorage.getItem('ids'))) {
         let outfitIds = JSON.parse(localStorage.getItem('ids'))
+        if (outfitIds.includes(this.props.currId)) {
+          console.log('checking if includes')
+          if (!this.props.starClicked) {
+            console.log('setting to false')
+            this.props.starClick()
+          }
+        } else {
+          if (this.props.starClicked) {
+            this.props.starClick()
+          }
+        }
         let temp = [];
         outfitIds.forEach(id => {
           axios.post('/products/id', {product_id: id})
@@ -46,10 +57,13 @@ class Outfit extends React.Component {
     }
   }
     if (this.props.starClicked !== prevProps.starClicked) {
+      console.log('did it run');
       if (this.props.starClicked) {
         let old_data = JSON.parse(localStorage.getItem('ids')) || []
         let new_data = this.props.currId;
-        old_data.push(new_data);
+        if (!old_data.includes(new_data)) {
+          old_data.push(new_data);
+        }
         localStorage.setItem('ids', JSON.stringify(old_data))
         let outfitIds = JSON.parse(localStorage.getItem('ids'))
         let temp = []

@@ -6,7 +6,7 @@ import starAvg from '../helpers/starAvg.js';
 const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
   var allData = []
 
-  // console.log('this is the product data', relIds)
+  const [modal, setModal] = useState(false)
 
     relIds.forEach((item) => {
       allData.push({
@@ -16,12 +16,6 @@ const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
       })
     })
 
-
-
-    const compare = () => {
-      console.log('Comparison widget')
-    }
-
     const slideRight = () => {
       var slider = document.getElementById('slider')
       slider.scrollLeft = slider.scrollLeft + 500
@@ -29,6 +23,10 @@ const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
     const slideLeft = () => {
       var slider = document.getElementById('slider')
       slider.scrollLeft = slider.scrollLeft - 500
+    }
+
+    const toggleModal = () => {
+      setModal(!modal)
     }
 
 
@@ -40,8 +38,11 @@ const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
          <p className='prodName' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>{item.itemData.name}</p>
          <p className='prodPrice' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>{item.itemData.default_price}</p>
          <StarReview rating={starAvg(item.itemStars)}/>
-         <button onClick={openModal(item.itemData.id)} className='comp-btn'>Compare</button>
-
+         <button onClick={() => {
+          openModal(item.itemData.id)
+          toggleModal()
+        }} onClick className='comp-btn'>Compare</button>
+        <Comparison currId={id} />
       </div>
     )
   })

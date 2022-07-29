@@ -8,9 +8,7 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      relatedIds: [],
-      comparison: false,
-      relProd: {}
+      relatedIds: []
     }
   }
 
@@ -83,13 +81,6 @@ class RelatedProducts extends React.Component {
         currName={this.props.currName}
         starClick={this.props.starClick.bind(this)}
         />
-
-        {this.state.comparison ? <Comparison
-        id={this.props.currId}
-        relProds={this.state.relatedIds}
-        closeModal={this.closeModal.bind(this)}
-        /> : null}
-
 
         </div>
       </div>
