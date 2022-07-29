@@ -22,16 +22,16 @@ import axios from 'axios'
 //   }
 // }
 
-const Comparison = () => {
+const Comparison = ({closeModal, itemData, name, currName, currFeat}) => {
 
 
 
 
 
   return (
-    <div className='modal-container'>
+    <div id='modal-container'>
       <h4>Comparing</h4>
-      <button>Close me!</button>
+      <button onClick={closeModal}>Close me!</button>
     </div>
   )
 }

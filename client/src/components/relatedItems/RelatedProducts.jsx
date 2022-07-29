@@ -2,24 +2,31 @@ import React from 'react';
 import RelatedItems from './RelatedItems.jsx';
 import Outfit from './Outfit.jsx';
 import axios from 'axios';
-import Comparison from './Comparison.jsx'
+import Comparison from './Comparison.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      relatedIds: []
+      relatedIds: [],
+      comparison: false,
+      itemData: [],
+      currIdFeat: []
     }
   }
 
   closeModal() {
     this.setState({comparison: false});
+    document.getElementById('modal-container').style.visibility = 'hidden';
   }
 
-  openModal(e) {
+  openModal(data) {
     if (!this.state.comparison) {
-      this.setState({comparison: true, relProd: e})
-      console.log('what was clicked', e)
+      axios.post('/products/id', {product_id: this.props.currId})
+        .then(data => {
+          this.setState({comparison: true, itemData: data, currIdFeat: data.data.features})
+        })
+      document.getElementById('modal-container').style.visibility = 'visible';
     }
   }
 
@@ -62,6 +69,14 @@ class RelatedProducts extends React.Component {
     return (
       <div className='related'>
 
+        <Comparison
+        itemData={this.state.itemData.features}
+        closeModal={this.closeModal.bind(this)}
+        itemName={this.state.itemData.name}
+        currName={this.props.currName}
+        currFeat={this.state.currIdFeat}
+        />
+
 
         <div className='relSection'>
         <h2 className='relatedHeader'>Related Products</h2>
@@ -70,7 +85,10 @@ class RelatedProducts extends React.Component {
         id={this.props.currentProductID}
         relIds={this.state.relatedIds}
         changeProduct={this.props.changeProduct}
-        openModal={this.openModal.bind(this)}/>
+        openModal={this.openModal.bind(this)}
+        closeModal={this.closeModal.bind(this)}
+        />
+
         </div>
 
         <div className='currOutfit'>
@@ -81,8 +99,9 @@ class RelatedProducts extends React.Component {
         currName={this.props.currName}
         starClick={this.props.starClick.bind(this)}
         />
-
         </div>
+
+
       </div>
     )
   }

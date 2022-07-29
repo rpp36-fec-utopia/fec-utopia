@@ -3,7 +3,7 @@ import Comparison from './Comparison.jsx'
 import StarReview from '../helpers/StarReview.jsx';
 import starAvg from '../helpers/starAvg.js';
 
-const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
+const RelatedItems = ({items, id, relIds, changeProduct, openModal, closeModal}) => {
   var allData = []
 
   const [modal, setModal] = useState(false)
@@ -39,10 +39,9 @@ const RelatedItems = ({items, id, relIds, changeProduct, openModal}) => {
          <p className='prodPrice' onClick={() => changeProduct(item.itemData.id, item.itemData.name)}>{item.itemData.default_price}</p>
          <StarReview rating={starAvg(item.itemStars)}/>
          <button onClick={() => {
-          openModal(item.itemData.id)
+          openModal(item.itemData)
           toggleModal()
-        }} onClick className='comp-btn'>Compare</button>
-        <Comparison currId={id} />
+        }} className='comp-btn'>Compare</button>
       </div>
     )
   })
