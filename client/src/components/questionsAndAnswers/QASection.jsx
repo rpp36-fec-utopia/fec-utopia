@@ -78,14 +78,14 @@ class QASection extends React.Component {
           searchArray.push(this.state.questions[i]);
         }
       }
+
       return (
       <div className="section" data-testid="QA-Section">
         <h4>QUESTIONS AND ANSWERS</h4>
         <input type="text" className="search" onChange={this.handleSearch} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
-        <QuestionsList questions={searchArray} moreQuestions={this.state.moreQuestions}/>
+        <QuestionsList questions={searchArray}/>
         <QuestionsModal hide={this.hideQuestionsModal} id={this.props.id} name={this.props.name} show={this.state.questionsModal}/>
         <div className="questionButtons">
-          <button>More Questions</button>
           <button onClick={this.showQuestionsModal}>Add Question</button>
         </div>
       </div>
