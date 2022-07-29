@@ -49,6 +49,7 @@ class QuestionsModal extends React.Component {
       return null;
     } else {
       return <div className="Modal">
+        <div className="Modal-Content">
         <h3>ASK YOUR QUESTION</h3>
         <span>about {this.props.name}</span>
 
@@ -59,6 +60,7 @@ class QuestionsModal extends React.Component {
         </div>
         <div>
           <button onClick={this.handleSubmit}>Submit Question</button>
+        </div>
         </div>
         </div>
     }
