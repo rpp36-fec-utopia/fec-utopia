@@ -4,8 +4,8 @@
 Utopia is a product detail page for Project Atelier.
 
 ## Table of Contents:
-[Link](#description)
-[Link](#installation)
+* [Description](#description)
+* [Installation](#installation)
 
 ## Description
 Utopia is an app that allows for easy viewing of a product.
