@@ -36,8 +36,6 @@ class QuestionsListItem extends React.Component {
 
     let answerListKeys = Object.keys(this.props.question.answers);
     let starterAnswers = [answerListKeys[0], answerListKeys[1]];
-    console.log(answerListKeys)
-    console.log(starterAnswers);
 
     if (answerListKeys.length <= 2) {
       showMoreAnswers = <></>

@@ -125,7 +125,6 @@ app.post('/qa/questions/add', (req, res) => {
 
 app.post('/qa/answers/add', (req, res) => {
   axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-  console.log('HERE IS THE QUESTION ID: ', req.body.question_id)
   axios.post(`${url}/qa/questions/${req.body.question_id}/answers`, {
     body: req.body.body,
     name: req.body.name,
