@@ -42,7 +42,6 @@ class ExpandedView extends React.Component {
     var py = e.pageY;
     var tx = -1 * ((px / 2.5) / wx) * px;
     var ty = -1 * ((py / 2.5) / wy) * py;
-    console.log(tx, ty);
     document.getElementById('zoom').style.transform = `scale(2.5) translate(${tx + 75}px, ${ty + 25}px)`;
   }
 
