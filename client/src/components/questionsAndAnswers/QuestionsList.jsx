@@ -9,7 +9,7 @@ class QuestionsList extends React.Component {
 
   render() {
     let starterQuestions = [this.props.questions[0], this.props.questions[1]];
-    if (starterQuestions[0] && this.props.moreQuestions === false) {
+    if (starterQuestions[0] && starterQuestions[1] && this.props.moreQuestions === false) {
       return (
         <div className="questionsList" data-testid="Questions-List">
           <h5>Questions List</h5>

@@ -41,7 +41,7 @@ class QuestionsListItem extends React.Component {
       showMoreAnswers = <></>
     }
 
-    if (starterAnswers[0] && this.state.moreAnswers === false) {
+    if (starterAnswers[0] && starterAnswers[1] && this.state.moreAnswers === false) {
       return (
         <div className="question">
           <div className="qa">
