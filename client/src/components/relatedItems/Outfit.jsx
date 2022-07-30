@@ -12,36 +12,55 @@ class Outfit extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) { // the clicked component goes back to being unclicked on page refresh
+  componentDidUpdate(prevProps) {
     if (this.props.currId !== prevProps.currId) {
       if (JSON.parse(localStorage.getItem('ids'))) {
         let outfitIds = JSON.parse(localStorage.getItem('ids'))
+        if (outfitIds.includes(this.props.currId)) {
+          if (!this.props.starClicked) {
+            this.props.starClick()
+          }
+        } else {
+          if (this.props.starClicked) {
+            this.props.starClick()
+          }
+        }
         let temp = [];
         outfitIds.forEach(id => {
           axios.post('/products/id', {product_id: id})
             .then(prodInfo => {
               axios.post('/products/styles', {product_id: id})
                .then(prodStyles => {
-                temp.push({
-                  data: prodInfo.data,
-                  styles: prodStyles.data
+                axios({
+                  method: 'get',
+                  baseUrl: 'localhost:3000',
+                  url: '/reviews/star',
+                  params: {product_id: id},
+                }).then(stars => {
+                  temp.push({
+                    data: prodInfo.data,
+                    styles: prodStyles.data,
+                    stars: stars.data.ratings
+                  })
+                  this.setState({
+                    outfit: temp,
+                    notEmpty: true
+                  })
                 })
                })
                .catch(err => console.log('there was an error getting the styles', err))
             })
             .catch(err => console.log('there was an error getting the data', err))
         })
-        this.setState({
-          outfit: temp,
-          notEmpty: true
-        })
-      }
     }
+  }
     if (this.props.starClicked !== prevProps.starClicked) {
       if (this.props.starClicked) {
         let old_data = JSON.parse(localStorage.getItem('ids')) || []
         let new_data = this.props.currId;
-        old_data.push(new_data);
+        if (!old_data.includes(new_data)) {
+          old_data.push(new_data);
+        }
         localStorage.setItem('ids', JSON.stringify(old_data))
         let outfitIds = JSON.parse(localStorage.getItem('ids'))
         let temp = []
@@ -50,9 +69,21 @@ class Outfit extends React.Component {
             .then(prodInfo => {
               axios.post('/products/styles', {product_id: id})
                .then(prodStyles => {
-                temp.push({
-                  data: prodInfo.data,
-                  styles: prodStyles.data
+                axios({
+                  method: 'get',
+                  baseUrl: 'localhost:3000',
+                  url: '/reviews/star',
+                  params: {product_id: id},
+                }).then(stars => {
+                  temp.push({
+                    data: prodInfo.data,
+                    styles: prodStyles.data,
+                    stars: stars.data.ratings
+                  })
+                  this.setState({
+                    outfit: temp,
+                    notEmpty: true
+                  })
                 })
                })
                .catch(err => console.log('there was an error getting the styles', err))

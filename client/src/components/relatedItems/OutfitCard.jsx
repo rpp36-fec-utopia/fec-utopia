@@ -1,9 +1,20 @@
 import React from 'react';
+import StarReview from '../helpers/StarReview.jsx';
+import starAvg from '../helpers/starAvg.js';
 
 const OutfitCard = ({outfit}) => {
-  console.log('these are the outfits', outfit)
 
-  let outfitArray = outfit;
+
+  let outfitArray = outfit.slice();
+
+  const slideRight = () => {
+    var slider = document.getElementById('sliders')
+    slider.scrollLeft = slider.scrollLeft + 500
+  }
+  const slideLeft = () => {
+    var slider = document.getElementById('sliders')
+    slider.scrollLeft = slider.scrollLeft - 500
+  }
 
   const outfits = outfitArray.map((item, i) => {
     return (
@@ -12,13 +23,22 @@ const OutfitCard = ({outfit}) => {
         <p className='category'>{item.data.category}</p>
         <p className='prodName'>{item.data.name}</p>
         <p className='prodPrice'>{item.data.default_price}</p>
-        <p className='rating'>★★★★★</p>
+        <StarReview rating={starAvg(item.stars)} />
+        <button onClick={() => {
+          let outfitArray = JSON.parse(localStorage.getItem('ids'))
+          var new_data = outfitArray.filter(prod => prod !== item.data.id)
+          localStorage.setItem('ids', JSON.stringify(new_data))
+        }}>X</button>
       </div>
     )
   })
 
   return (
-    <div className='relItems'>{outfits}</div>
+    <div className='relItems' >
+    <button onClick={slideLeft}>&#8592;</button>
+  <div className='relItems' id='sliders' >{outfits}</div>
+  <button onClick={slideRight}>&#8594;</button>
+  </div>
   )
 }
 

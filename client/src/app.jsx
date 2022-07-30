@@ -14,10 +14,12 @@ class App extends React.Component {
       currentProductID: 0,
       currentProductName: "",
       starClicked: false,
+      storage: localStorage.getItem('ids')
     }
     this.starClick.bind(this);
     this.changeProduct = this.changeProduct.bind(this)
   }
+
 
   changeProduct(prodId, prodName) {
     this.setState({
@@ -36,7 +38,7 @@ class App extends React.Component {
     }))
   }
 
-  starClick(e) {
+  starClick(bool) {
     this.setState({
       starClicked: !this.state.starClicked,
     });
