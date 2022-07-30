@@ -54,9 +54,11 @@ class AnswersModal extends React.Component {
         <span>for this question</span>
 
         <div className="Form">
-          <input placeholder="Your Answer" onChange={this.handleChange1}></input>
+          <input placeholder="Your Answer" onChange={this.handleChange1} className="textArea"></input>
+          For privacy reasons, do not use your full name or email
           <input placeholder="Your Nickname" onChange={this.handleChange2}></input>
           <input placeholder="Your E-Mail" onChange={this.handleChange3}></input>
+          For authentication reasons, you will not be emailed
         </div>
         <div>
           <button onClick={this.handleSubmit}>Submit Question</button>
